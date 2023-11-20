@@ -84,9 +84,27 @@
             `/* ${fileName} */\n\n${JSON.stringify(body, null, 2)}`
         )
         .join("\n\n\n");
+
+      const jsonData = pluginMessage.files.map(({ fileName, body }) => JSON.stringify(body, null, 2));
+      downloadJSON(jsonData);
     }
   };
   document.getElementById("export").addEventListener("click", () => {
     parent.postMessage({ pluginMessage: { type: "EXPORT" } }, "*");
   });
+
+  function downloadJSON(jsonData) {
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'data.json'; // File name to be downloaded
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
 </script>
