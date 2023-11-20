@@ -69,9 +69,9 @@
   }
 </style>
 <main>
-  <button id="export" type="button">Export Variables</button>
+  <button id="export" type="button">Exportar Variáveis</button>
   <textarea
-    placeholder="Exported variables will render here..."
+    placeholder="As variáveis exportadas será mostrada aqui..."
     readonly
   ></textarea>
 </main>
@@ -85,21 +85,22 @@
         )
         .join("\n\n\n");
 
-      const jsonData = pluginMessage.files.map(({ fileName, body }) => JSON.stringify(body, null, 2));
-      downloadJSON(jsonData);
+      
+      downloadJSON(pluginMessage.files);
     }
   };
   document.getElementById("export").addEventListener("click", () => {
     parent.postMessage({ pluginMessage: { type: "EXPORT" } }, "*");
   });
 
-  function downloadJSON(jsonData) {
+  function downloadJSON(files) {
+    const jsonData = files.map(({ fileName, body }) => JSON.stringify(body, null, 2));
     const blob = new Blob([jsonData], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
 
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'data.json'; // File name to be downloaded
+    link.download = `${files.map(({ fileName, body }) => fileName)}`.replace(/\s+/g, '-');
 
     document.body.appendChild(link);
     link.click();
