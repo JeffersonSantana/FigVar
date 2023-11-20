@@ -81,7 +81,7 @@
       document.querySelector("textarea").innerHTML = pluginMessage.files
         .map(
           ({ fileName, body }) =>
-            `/* ${fileName} */\n\n${JSON.stringify(body, null, 2)}`
+            `/* ${fileName.replace(/\s+/g, '-')} */\n\n${JSON.stringify(body, null, 2)}`
         )
         .join("\n\n\n");
 
