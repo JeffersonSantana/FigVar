@@ -1,6 +1,3 @@
-//https://www.figma.com/plugin-docs/working-with-variables/
-https://github.com/figma/plugin-samples/tree/master/variables-import-export
-
 console.clear();
 
 function createCollection(name) {
@@ -176,8 +173,8 @@ figma.ui.onmessage = (e) => {
 };
 if (figma.command === "import") {
   figma.showUI(__uiFiles__["import"], {
-    width: 500,
-    height: 500,
+    width: 250,
+    height: 350,
     themeColors: true,
   });
 } else if (figma.command === "export") {

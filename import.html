@@ -1,64 +1,6 @@
 <style>
-  :root {
-    --spacing: 0.8rem;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    background-color: var(--figma-color-bg);
-    color: var(--figma-color-text);
-    margin: 0;
-    padding: var(--spacing);
-  }
-  html,
-  body {
-    height: 100%;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing);
-    height: 100%;
-  }
-  button {
-    appearance: none;
-    border-radius: 4px;
-    padding: var(--spacing);
-  }
-  input,
-  textarea {
-    font-family: Andale Mono, monospace;
-    font-size: 0.9rem;
-    padding: var(--spacing);
-  }
-  textarea {
-    flex: 1;
-    white-space: pre;
-  }
-  form > * {
-    display: block;
-    width: 100%;
-  }
-  button {
-    background-color: var(--figma-color-bg-brand);
-    border: none;
-    color: var(--figma-color-text-onbrand);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-weight: bold;
-  }
-  input,
-  textarea {
-    background-color: var(--figma-color-bg-secondary);
-    color: var(--figma-color-text-secondary);
-    border: 2px solid var(--figma-color-border);
-  }
-  input:focus,
-  textarea:focus {
-    border-color: var(--figma-color-border-selected);
-    outline: none;
+  input, textarea {
+    display: none;
   }
 </style>
 <form>
@@ -66,44 +8,393 @@
     placeholder="Collection Name"
     required
     type="text"
-    value="Wild Examples"
+    value="Ligero"
   />
   <textarea required placeholder="Tokens JSON">
-{
-  "color": {
-    "grouptyped": {
-      "$type": "color",
-      "brown": { "$value": "#a2845e" },
-      "danger-deep": { "$value": "{color.valuetyped.danger}" }
-    },
-    "valuetyped": {
-      "red": {
-        "$value": "{color.deep.deep.deep.deep.deep}"
+    {
+      "SM": {
+        "$type": "number",
+        "$value": 4
       },
-      "danger": { "$value": "{color.valuetyped.red}" }
-    },
-    "deep": {"deep": {"deep": {"deep": {"deep": {"$type": "color", "$value": "#FF0000" }}}}}
-  },
-  "spacing": {
-    "$type": "number",
-    "some numbers": {
-      "spacer0": {"$value": 0},
-      "spacerXs": {"$value": 4},
-      "spacerS": {"$value": 8},
-      "spacerM": {"$value": 16},
-      "spacerX": {"$value": 24},
-      "spacerXl": {"$value": 32},
-      "spacerXxl": {"$value": 40},
-      "spacex": {
-        "funniness": {"$value": 0},
-        "cleverness": {"$value": 1}
+      "MD": {
+        "$type": "number",
+        "$value": 8
+      },
+      "LG": {
+        "$type": "number",
+        "$value": 16
+      },
+      "Circle": {
+        "$type": "number",
+        "$value": 32
+      },
+  
+      "Quarck": {
+        "$type": "number",
+        "$value": 4
+      },
+      "Nano": {
+        "$type": "number",
+        "$value": 8
+      },
+      "XXXS": {
+        "$type": "number",
+        "$value": 16
+      },
+      "XXS": {
+        "$type": "number",
+        "$value": 24
+      },
+      "XS": {
+        "$type": "number",
+        "$value": 32
+      },
+      "SM": {
+        "$type": "number",
+        "$value": 40
+      },
+      "MD": {
+        "$type": "number",
+        "$value": 48
+      },
+      "LG": {
+        "$type": "number",
+        "$value": 56
+      },
+      "XL": {
+        "$type": "number",
+        "$value": 64
+      },
+      "XXL": {
+        "$type": "number",
+        "$value": 80
+      },
+      "XXXL": {
+        "$type": "number",
+        "$value": 120
+      },
+      "Huge": {
+        "$type": "number",
+        "$value": 160
+      },
+      "Giant": {
+        "$type": "number",
+        "$value": 200
+      },
+  
+      "Component tokens": {
+        "BackgroundColor": {
+          "$type": "color",
+          "$value": "{Global Tokens.Neutral.High Pure}"
+        },
+        "Componentes": {
+          "Error Components": {
+            "Area Color": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Border Color": {
+              "$type": "color",
+              "$value": "{Global Tokens.Feedback.Error Color}"
+            },
+            "Help Text Color": {
+              "$type": "color",
+              "$value": "{Global Tokens.Feedback.Error Color}"
+            }
+          },
+          "Success Componts": {
+            "Area Color": {
+              "$type": "color",
+              "$value": "{Component tokens.BackgroundColor}"
+            },
+            "Border Color": {
+              "$type": "color",
+              "$value": "{Global Tokens.Feedback.Success Color}"
+            }
+          },
+          "Disable Components": {
+            "Area Color": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Medium}"
+            },
+            "Border Color": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Light}"
+            }
+          },
+          "Texts Components": {
+            "Placeholder Enable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Light}"
+            },
+            "Placeholder Disable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Dark}"
+            },
+            "Label and Text Enable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Pure}"
+            },
+            "Text Disable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Light}"
+            },
+            "Label Disable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Medium}"
+            },
+            "Help Text": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Medium}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{Global Tokens.Brand.Secondary Dark}"
+            },
+            "Pressed": {
+              "$type": "color",
+              "$value": "{Global Tokens.Brand.Secondary Light}"
+            }
+          },
+          "Check Toggle and Switch": {
+            "Background On": {
+              "$type": "color",
+              "$value": "{Global Tokens.Brand.Secondary}"
+            },
+            "Ball On": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Stroke On": {
+              "$type": "color",
+              "$value": "{Global Tokens.Brand.Secondary}"
+            },
+            "Error": {
+              "$type": "color",
+              "$value": "{Global Tokens.Feedback.Error Color}"
+            },
+            "Check Inverse Error": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Check Inverse Disable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Check Inverse": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Hover": {
+              "$type": "color",
+              "$value": "{Global Tokens.Brand.Primary Dark}"
+            },
+            "Pressed": {
+              "$type": "color",
+              "$value": "{Global Tokens.Brand.Primary Light}"
+            }
+          },
+          "Alert": {
+            "Background": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Text-Title-Error": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Pure}"
+            },
+            "Text": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Pure}"
+            },
+            "Text-Title-Warning": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Pure}"
+            },
+            "Text-Title-Success": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Pure}"
+            },
+            "Icon": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Medium}"
+            }
+          },
+          "Badge Tag and Label": {
+            "Text Enable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Dark}"
+            },
+            "Background Enable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Medium}"
+            },
+            "Text Disable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Light}"
+            },
+            "Background Disable": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Light}"
+            },
+            "Success Background": {
+              "$type": "color",
+              "$value": "{Global Tokens.Feedback.Success Color}"
+            },
+            "Success Text": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            },
+            "Error Background": {
+              "$type": "color",
+              "$value": "{Global Tokens.Feedback.Error Color}"
+            },
+            "Error Text": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            }
+          },
+          "Avatar": {
+            "Enable Icon": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Medium}"
+            },
+            "Enable Background": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Medium}"
+            },
+            "Disable Background": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Medium}"
+            },
+            "Disable Icon": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.Low Light}"
+            },
+            "Selected": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Light}"
+            }
+          },
+          "Card": {
+            "Background": {
+              "$type": "color",
+              "$value": "{Global Tokens.Neutral.High Pure}"
+            }
+          }
+        },
+        "BackgroundColorPrimary": {
+          "$type": "color",
+          "$value": "{Global Tokens.Brand.Primary}"
+        }
+      },
+      "Global Tokens": {
+        "Brand": {
+          "Primary": {
+            "$type": "color",
+            "$value": "#de3449"
+          },
+          "Primary Dark": {
+            "$type": "color",
+            "$value": "#910012"
+          },
+          "Primary Light": {
+            "$type": "color",
+            "$value": "#fa4848"
+          },
+          "Secondary": {
+            "$type": "color",
+            "$value": "#55babc"
+          },
+          "Secondary Dark": {
+            "$type": "color",
+            "$value": "#007d80"
+          },
+          "Secondary Light": {
+            "$type": "color",
+            "$value": "#6bd4d6"
+          }
+        },
+        "Neutral": {
+          "High Pure": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "Low Pure": {
+            "$type": "color",
+            "$value": "#000000"
+          },
+          "Low Light": {
+            "$type": "color",
+            "$value": "#989898"
+          },
+          "High Light": {
+            "$type": "color",
+            "$value": "#f4f4f4"
+          },
+          "High Medium": {
+            "$type": "color",
+            "$value": "#e5e5e5"
+          },
+          "Low Medium": {
+            "$type": "color",
+            "$value": "#666666"
+          },
+          "High Dark": {
+            "$type": "color",
+            "$value": "#c7c7c7"
+          },
+          "Low Dark": {
+            "$type": "color",
+            "$value": "#333333"
+          }
+        },
+        "Feedback": {
+          "Success Color": {
+            "$type": "color",
+            "$value": "#198045"
+          },
+          "Error Color": {
+            "$type": "color",
+            "$value": "#d81916"
+          },
+          "Warning Color": {
+            "$type": "color",
+            "$value": "#f7ba1e"
+          }
+        },
+        "Transparent": {
+          "Intense": {
+            "$type": "color",
+            "$value": "rgba(255, 255, 255, 0.6400)"
+          },
+          "Semi-Opaque": {
+            "$type": "color",
+            "$value": "rgba(255, 255, 255, 0.7200)"
+          },
+          "Medium": {
+            "$type": "color",
+            "$value": "rgba(255, 255, 255, 0.3200)"
+          },
+          "Light": {
+            "$type": "color",
+            "$value": "rgba(255, 255, 255, 0.1600)"
+          },
+          "Semi-Transparen": {
+            "$type": "color",
+            "$value": "rgba(255, 255, 255, 0.0800)"
+          },
+          "Low-Medium-Intense": {
+            "$type": "color",
+            "$value": "rgba(102, 102, 102, 0.6400)"
+          }
+        }
       }
+  
     }
-  }
-}
 </textarea
   >
-  <button type="submit">Import Variables</button>
+  <button type="submit">Iniciar Variáveis do Ligero</button>
 </form>
 
 <script>
