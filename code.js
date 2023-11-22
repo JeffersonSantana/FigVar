@@ -172,7 +172,7 @@ figma.ui.onmessage = (e) => {
 
 figma.showUI(__html__, {
   width: 260,
-  height: 360,
+  height: 300,
   themeColors: true,
 });
 
