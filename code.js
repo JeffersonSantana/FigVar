@@ -124,15 +124,6 @@ function traverseToken({
   }
 }
 
-function exportToJSON() {
-  const collections = figma.variables.getLocalVariableCollections();
-  const files = [];
-  collections.forEach((collection) =>
-    files.push(...processCollection(collection))
-  );
-  figma.ui.postMessage({ type: "EXPORT_RESULT", files });
-}
-
 function processCollection({ name, modes, variableIds }) {
   const files = [];
   modes.forEach((mode) => {
@@ -167,23 +158,14 @@ figma.ui.onmessage = (e) => {
   if (e.type === "IMPORT") {
     const { fileName, body } = e;
     importJSONFile({ fileName, body });
-  } else if (e.type === "EXPORT") {
-    exportToJSON();
   }
 };
-if (figma.command === "import") {
-  figma.showUI(__uiFiles__["import"], {
-    width: 250,
-    height: 350,
-    themeColors: true,
-  });
-} else if (figma.command === "export") {
-  figma.showUI(__uiFiles__["export"], {
-    width: 500,
-    height: 500,
-    themeColors: true,
-  });
-}
+
+figma.showUI(__html__, {
+  width: 250,
+  height: 350,
+  themeColors: true,
+});
 
 function rgbToHex({ r, g, b, a }) {
   if (a !== 1) {
