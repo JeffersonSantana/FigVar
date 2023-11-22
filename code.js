@@ -159,13 +159,38 @@ figma.ui.onmessage = (e) => {
     const { fileName, body } = e;
     importJSONFile({ fileName, body });
   }
+  
+  if (e.type === "APPLYVARIABLE") {
+    const node = figma.currentPage.selection[0];
+
+    if (node && node.mainComponent) {
+      const collectionAId = "ID da Collection A";
+      const collectionBId = "ID da Collection B";
+    }
+  }
 };
 
 figma.showUI(__html__, {
   width: 260,
-  height: 350,
+  height: 360,
   themeColors: true,
 });
+
+const localCollections = figma.variables.getLocalVariableCollections();
+if(localCollections.length > 0) {
+  localCollections.forEach(element => {
+    if(element.name === "Ligero") {
+      console.log("Tem o Ligero");
+      figma.ui.postMessage({ type: 'HASLIGERO', value: true });
+    } else {
+      console.log("Não tem o Ligero");
+      figma.ui.postMessage({ type: 'HASLIGERO', value: false });
+    }
+  });
+} else {
+  console.log("Não tem o Ligero");
+  figma.ui.postMessage({ type: 'HASLIGERO', value: false });
+}
 
 function rgbToHex({ r, g, b, a }) {
   if (a !== 1) {
