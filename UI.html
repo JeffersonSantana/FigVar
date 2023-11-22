@@ -1,510 +1,12 @@
-<style>
-  :root {
-    --spacing: 0.8rem;
-  }
+<!-- LOADING -->
+<section class="loading show">
+  <div class="loader"></div>
+  <p class="textLoader">Verificando se já existe a Collection Ligero</p>
+</section>
+<!-- /LOADING -->
 
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    background-color: var(--figma-color-bg);
-    color: var(--figma-color-text);
-    margin: 0;
-    padding: var(--spacing);
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-  }
-
-  p {
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Escolha de fonte sem serifa */
-    font-size: 16px; /* Tamanho do texto */
-    line-height: 1.6; /* Espaçamento entre linhas */
-    color: #ffffff; /* Cor do texto */
-    /* Outros estilos opcionais */
-    margin-bottom: 10px; /* Espaço abaixo do parágrafo */
-  }
-
-  html,
-  body,
-  main {
-    height: 100%;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing);
-  }
-
-  button {
-    appearance: none;
-    border-radius: 4px;
-    padding: var(--spacing);
-  }
-
-  textarea, input {
-    display: none;
-  }
-
-  button {
-    display: block;
-    width: 100%;
-    background-color: var(--figma-color-bg-component);
-    border: none;
-    color: var(--figma-color-text-onbrand);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-weight: bold;
-  }
-
-  #startVariable p {
-    text-align: left;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-size: 14px;
-  }
-
-  #export {
-    background-color: var(--figma-color-bg-component);
-  }
-
-  /* Estilos para o elemento de loading */
-  .loader {
-    border: 4px solid #f3f3f3; /* Cor do círculo */
-    border-top: 4px solid var(--figma-color-bg-component); /* Cor do topo do círculo */
-    border-radius: 50%; /* Forma de círculo */
-    width: 40px; /* Largura */
-    height: 40px; /* Altura */
-    animation: spin 2s linear infinite; /* Animação de rotação */
-    margin: 20% auto; /* Margem para centralizar verticalmente */
-  }
-  
-  .textLoader {
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-size: 12px;
-    padding: 0 50px;
-  }
-
-  /* Animação de rotação */
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  .hide {
-    display: none;
-  }
-
-  .show {
-    display: flex;
-  }
-</style>
-
-<div class="loader show"></div>
-<p class="textLoader show">Verificando se já existe a Collection Ligero</p>
-
-<form class="hide" id="startVariable">
-  <input
-    placeholder="Collection Name"
-    required
-    type="text"
-    value="Ligero"
-  />
-  <textarea required placeholder="Tokens JSON">
-    {
-      "Corner Radius": {
-        "SM": {
-          "$type": "number",
-          "$value": 4
-        },
-        "MD": {
-          "$type": "number",
-          "$value": 8
-        },
-        "LG": {
-          "$type": "number",
-          "$value": 16
-        },
-        "Circle": {
-          "$type": "number",
-          "$value": 32
-        }
-      },
-      "Spacing Tokens": {
-        "Quarck": {
-          "$type": "number",
-          "$value": 4
-        },
-        "Nano": {
-          "$type": "number",
-          "$value": 8
-        },
-        "XXXS": {
-          "$type": "number",
-          "$value": 16
-        },
-        "XXS": {
-          "$type": "number",
-          "$value": 24
-        },
-        "XS": {
-          "$type": "number",
-          "$value": 32
-        },
-        "SM": {
-          "$type": "number",
-          "$value": 40
-        },
-        "MD": {
-          "$type": "number",
-          "$value": 48
-        },
-        "LG": {
-          "$type": "number",
-          "$value": 56
-        },
-        "XL": {
-          "$type": "number",
-          "$value": 64
-        },
-        "XXL": {
-          "$type": "number",
-          "$value": 80
-        },
-        "XXXL": {
-          "$type": "number",
-          "$value": 120
-        },
-        "Huge": {
-          "$type": "number",
-          "$value": 160
-        },
-        "Giant": {
-          "$type": "number",
-          "$value": 200
-        }
-      },
-      "Component Tokens": {
-        "BackgroundColor": {
-          "$type": "color",
-          "$value": "{Global Tokens.Neutral.High Pure}"
-        },
-        "Componentes": {
-          "Error Components": {
-            "Area Color": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Border Color": {
-              "$type": "color",
-              "$value": "{Global Tokens.Feedback.Error Color}"
-            },
-            "Help Text Color": {
-              "$type": "color",
-              "$value": "{Global Tokens.Feedback.Error Color}"
-            }
-          },
-          "Success Componts": {
-            "Area Color": {
-              "$type": "color",
-              "$value": "{Component tokens.BackgroundColor}"
-            },
-            "Border Color": {
-              "$type": "color",
-              "$value": "{Global Tokens.Feedback.Success Color}"
-            }
-          },
-          "Disable Components": {
-            "Area Color": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Medium}"
-            },
-            "Border Color": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Light}"
-            }
-          },
-          "Texts Components": {
-            "Placeholder Enable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Light}"
-            },
-            "Placeholder Disable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Dark}"
-            },
-            "Label and Text Enable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Pure}"
-            },
-            "Text Disable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Light}"
-            },
-            "Label Disable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Medium}"
-            },
-            "Help Text": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Medium}"
-            },
-            "Hover": {
-              "$type": "color",
-              "$value": "{Global Tokens.Brand.Secondary Dark}"
-            },
-            "Pressed": {
-              "$type": "color",
-              "$value": "{Global Tokens.Brand.Secondary Light}"
-            }
-          },
-          "Check Toggle and Switch": {
-            "Background On": {
-              "$type": "color",
-              "$value": "{Global Tokens.Brand.Secondary}"
-            },
-            "Ball On": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Stroke On": {
-              "$type": "color",
-              "$value": "{Global Tokens.Brand.Secondary}"
-            },
-            "Error": {
-              "$type": "color",
-              "$value": "{Global Tokens.Feedback.Error Color}"
-            },
-            "Check Inverse Error": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Check Inverse Disable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Check Inverse": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Hover": {
-              "$type": "color",
-              "$value": "{Global Tokens.Brand.Primary Dark}"
-            },
-            "Pressed": {
-              "$type": "color",
-              "$value": "{Global Tokens.Brand.Primary Light}"
-            }
-          },
-          "Alert": {
-            "Background": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Text-Title-Error": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Pure}"
-            },
-            "Text": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Pure}"
-            },
-            "Text-Title-Warning": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Pure}"
-            },
-            "Text-Title-Success": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Pure}"
-            },
-            "Icon": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Medium}"
-            }
-          },
-          "Badge Tag and Label": {
-            "Text Enable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Dark}"
-            },
-            "Background Enable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Medium}"
-            },
-            "Text Disable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Light}"
-            },
-            "Background Disable": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Light}"
-            },
-            "Success Background": {
-              "$type": "color",
-              "$value": "{Global Tokens.Feedback.Success Color}"
-            },
-            "Success Text": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            },
-            "Error Background": {
-              "$type": "color",
-              "$value": "{Global Tokens.Feedback.Error Color}"
-            },
-            "Error Text": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            }
-          },
-          "Avatar": {
-            "Enable Icon": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Medium}"
-            },
-            "Enable Background": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Medium}"
-            },
-            "Disable Background": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Medium}"
-            },
-            "Disable Icon": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.Low Light}"
-            },
-            "Selected": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Light}"
-            }
-          },
-          "Card": {
-            "Background": {
-              "$type": "color",
-              "$value": "{Global Tokens.Neutral.High Pure}"
-            }
-          }
-        },
-        "BackgroundColorPrimary": {
-          "$type": "color",
-          "$value": "{Global Tokens.Brand.Primary}"
-        }
-      },
-      "Global Tokens": {
-        "Brand": {
-          "Primary": {
-            "$type": "color",
-            "$value": "#de3449"
-          },
-          "Primary Dark": {
-            "$type": "color",
-            "$value": "#910012"
-          },
-          "Primary Light": {
-            "$type": "color",
-            "$value": "#fa4848"
-          },
-          "Secondary": {
-            "$type": "color",
-            "$value": "#55babc"
-          },
-          "Secondary Dark": {
-            "$type": "color",
-            "$value": "#007d80"
-          },
-          "Secondary Light": {
-            "$type": "color",
-            "$value": "#6bd4d6"
-          }
-        },
-        "Neutral": {
-          "High Pure": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "Low Pure": {
-            "$type": "color",
-            "$value": "#000000"
-          },
-          "Low Light": {
-            "$type": "color",
-            "$value": "#989898"
-          },
-          "High Light": {
-            "$type": "color",
-            "$value": "#f4f4f4"
-          },
-          "High Medium": {
-            "$type": "color",
-            "$value": "#e5e5e5"
-          },
-          "Low Medium": {
-            "$type": "color",
-            "$value": "#666666"
-          },
-          "High Dark": {
-            "$type": "color",
-            "$value": "#c7c7c7"
-          },
-          "Low Dark": {
-            "$type": "color",
-            "$value": "#333333"
-          }
-        },
-        "Feedback": {
-          "Success Color": {
-            "$type": "color",
-            "$value": "#198045"
-          },
-          "Error Color": {
-            "$type": "color",
-            "$value": "#d81916"
-          },
-          "Warning Color": {
-            "$type": "color",
-            "$value": "#f7ba1e"
-          }
-        },
-        "Transparent": {
-          "Intense": {
-            "$type": "color",
-            "$value": "rgba(255, 255, 255, 0.6400)"
-          },
-          "Semi-Opaque": {
-            "$type": "color",
-            "$value": "rgba(255, 255, 255, 0.7200)"
-          },
-          "Medium": {
-            "$type": "color",
-            "$value": "rgba(255, 255, 255, 0.3200)"
-          },
-          "Light": {
-            "$type": "color",
-            "$value": "rgba(255, 255, 255, 0.1600)"
-          },
-          "Semi-Transparen": {
-            "$type": "color",
-            "$value": "rgba(255, 255, 255, 0.0800)"
-          },
-          "Low-Medium-Intense": {
-            "$type": "color",
-            "$value": "rgba(102, 102, 102, 0.6400)"
-          }
-        }
-      }
-    }
-  </textarea>
+<!-- START-VARIABLE -->
+<section class="hide" id="startVariable">
   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTY0IiBoZWlnaHQ9IjYxIiB2aWV3Qm94PSIwIDAgMTY0IDYx
   IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmci
   Pgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfOF83KSI+CjxwYXRoIGQ9Ik0zNi4y
@@ -708,227 +210,723 @@
   IGlkPSJjbGlwMF84XzciPgo8cmVjdCB3aWR0aD0iMTY0IiBoZWlnaHQ9IjYwLjI2
   MDUiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==" alt="Logo Ligero FigTools" width="164" height="60.26">
   <p>Vamos preparar seu ambiente Figma inserindo uma nova Collection chamada Ligero.</p>  
-  <button type="submit">Iniciar Variáveis do Ligero</button>
+  
+  <form>
+    <input
+      placeholder="Collection Name"
+      required
+      type="text"
+      value="Ligero"
+    />
+    <textarea required placeholder="Tokens JSON">
+      {
+        "Corner Radius": {
+          "SM": {
+            "$type": "number",
+            "$value": 4
+          },
+          "MD": {
+            "$type": "number",
+            "$value": 8
+          },
+          "LG": {
+            "$type": "number",
+            "$value": 16
+          },
+          "Circle": {
+            "$type": "number",
+            "$value": 32
+          }
+        },
+        "Spacing Tokens": {
+          "Quarck": {
+            "$type": "number",
+            "$value": 4
+          },
+          "Nano": {
+            "$type": "number",
+            "$value": 8
+          },
+          "XXXS": {
+            "$type": "number",
+            "$value": 16
+          },
+          "XXS": {
+            "$type": "number",
+            "$value": 24
+          },
+          "XS": {
+            "$type": "number",
+            "$value": 32
+          },
+          "SM": {
+            "$type": "number",
+            "$value": 40
+          },
+          "MD": {
+            "$type": "number",
+            "$value": 48
+          },
+          "LG": {
+            "$type": "number",
+            "$value": 56
+          },
+          "XL": {
+            "$type": "number",
+            "$value": 64
+          },
+          "XXL": {
+            "$type": "number",
+            "$value": 80
+          },
+          "XXXL": {
+            "$type": "number",
+            "$value": 120
+          },
+          "Huge": {
+            "$type": "number",
+            "$value": 160
+          },
+          "Giant": {
+            "$type": "number",
+            "$value": 200
+          }
+        },
+        "Component Tokens": {
+          "BackgroundColor": {
+            "$type": "color",
+            "$value": "{Global Tokens.Neutral.High Pure}"
+          },
+          "Componentes": {
+            "Error Components": {
+              "Area Color": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Border Color": {
+                "$type": "color",
+                "$value": "{Global Tokens.Feedback.Error Color}"
+              },
+              "Help Text Color": {
+                "$type": "color",
+                "$value": "{Global Tokens.Feedback.Error Color}"
+              }
+            },
+            "Success Componts": {
+              "Area Color": {
+                "$type": "color",
+                "$value": "{Component tokens.BackgroundColor}"
+              },
+              "Border Color": {
+                "$type": "color",
+                "$value": "{Global Tokens.Feedback.Success Color}"
+              }
+            },
+            "Disable Components": {
+              "Area Color": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Medium}"
+              },
+              "Border Color": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Light}"
+              }
+            },
+            "Texts Components": {
+              "Placeholder Enable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Light}"
+              },
+              "Placeholder Disable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Dark}"
+              },
+              "Label and Text Enable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Pure}"
+              },
+              "Text Disable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Light}"
+              },
+              "Label Disable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Medium}"
+              },
+              "Help Text": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Medium}"
+              },
+              "Hover": {
+                "$type": "color",
+                "$value": "{Global Tokens.Brand.Secondary Dark}"
+              },
+              "Pressed": {
+                "$type": "color",
+                "$value": "{Global Tokens.Brand.Secondary Light}"
+              }
+            },
+            "Check Toggle and Switch": {
+              "Background On": {
+                "$type": "color",
+                "$value": "{Global Tokens.Brand.Secondary}"
+              },
+              "Ball On": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Stroke On": {
+                "$type": "color",
+                "$value": "{Global Tokens.Brand.Secondary}"
+              },
+              "Error": {
+                "$type": "color",
+                "$value": "{Global Tokens.Feedback.Error Color}"
+              },
+              "Check Inverse Error": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Check Inverse Disable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Check Inverse": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Hover": {
+                "$type": "color",
+                "$value": "{Global Tokens.Brand.Primary Dark}"
+              },
+              "Pressed": {
+                "$type": "color",
+                "$value": "{Global Tokens.Brand.Primary Light}"
+              }
+            },
+            "Alert": {
+              "Background": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Text-Title-Error": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Pure}"
+              },
+              "Text": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Pure}"
+              },
+              "Text-Title-Warning": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Pure}"
+              },
+              "Text-Title-Success": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Pure}"
+              },
+              "Icon": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Medium}"
+              }
+            },
+            "Badge Tag and Label": {
+              "Text Enable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Dark}"
+              },
+              "Background Enable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Medium}"
+              },
+              "Text Disable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Light}"
+              },
+              "Background Disable": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Light}"
+              },
+              "Success Background": {
+                "$type": "color",
+                "$value": "{Global Tokens.Feedback.Success Color}"
+              },
+              "Success Text": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              },
+              "Error Background": {
+                "$type": "color",
+                "$value": "{Global Tokens.Feedback.Error Color}"
+              },
+              "Error Text": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              }
+            },
+            "Avatar": {
+              "Enable Icon": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Medium}"
+              },
+              "Enable Background": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Medium}"
+              },
+              "Disable Background": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Medium}"
+              },
+              "Disable Icon": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.Low Light}"
+              },
+              "Selected": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Light}"
+              }
+            },
+            "Card": {
+              "Background": {
+                "$type": "color",
+                "$value": "{Global Tokens.Neutral.High Pure}"
+              }
+            }
+          },
+          "BackgroundColorPrimary": {
+            "$type": "color",
+            "$value": "{Global Tokens.Brand.Primary}"
+          }
+        },
+        "Global Tokens": {
+          "Brand": {
+            "Primary": {
+              "$type": "color",
+              "$value": "#de3449"
+            },
+            "Primary Dark": {
+              "$type": "color",
+              "$value": "#910012"
+            },
+            "Primary Light": {
+              "$type": "color",
+              "$value": "#fa4848"
+            },
+            "Secondary": {
+              "$type": "color",
+              "$value": "#55babc"
+            },
+            "Secondary Dark": {
+              "$type": "color",
+              "$value": "#007d80"
+            },
+            "Secondary Light": {
+              "$type": "color",
+              "$value": "#6bd4d6"
+            }
+          },
+          "Neutral": {
+            "High Pure": {
+              "$type": "color",
+              "$value": "#ffffff"
+            },
+            "Low Pure": {
+              "$type": "color",
+              "$value": "#000000"
+            },
+            "Low Light": {
+              "$type": "color",
+              "$value": "#989898"
+            },
+            "High Light": {
+              "$type": "color",
+              "$value": "#f4f4f4"
+            },
+            "High Medium": {
+              "$type": "color",
+              "$value": "#e5e5e5"
+            },
+            "Low Medium": {
+              "$type": "color",
+              "$value": "#666666"
+            },
+            "High Dark": {
+              "$type": "color",
+              "$value": "#c7c7c7"
+            },
+            "Low Dark": {
+              "$type": "color",
+              "$value": "#333333"
+            }
+          },
+          "Feedback": {
+            "Success Color": {
+              "$type": "color",
+              "$value": "#198045"
+            },
+            "Error Color": {
+              "$type": "color",
+              "$value": "#d81916"
+            },
+            "Warning Color": {
+              "$type": "color",
+              "$value": "#f7ba1e"
+            }
+          },
+          "Transparent": {
+            "Intense": {
+              "$type": "color",
+              "$value": "rgba(255, 255, 255, 0.6400)"
+            },
+            "Semi-Opaque": {
+              "$type": "color",
+              "$value": "rgba(255, 255, 255, 0.7200)"
+            },
+            "Medium": {
+              "$type": "color",
+              "$value": "rgba(255, 255, 255, 0.3200)"
+            },
+            "Light": {
+              "$type": "color",
+              "$value": "rgba(255, 255, 255, 0.1600)"
+            },
+            "Semi-Transparen": {
+              "$type": "color",
+              "$value": "rgba(255, 255, 255, 0.0800)"
+            },
+            "Low-Medium-Intense": {
+              "$type": "color",
+              "$value": "rgba(102, 102, 102, 0.6400)"
+            }
+          }
+        }
+      }
+    </textarea>
+    <button type="submit">Iniciar Variáveis do Ligero</button>
+  </form>
 
   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEzIiBoZWlnaHQ9IjE3IiB2aWV3Qm94PSIwIDAgMTEzIDE3
-  IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmci
-  Pgo8cGF0aCBkPSJNMC43NTg1MjMgMTIuNzYwNVY0LjAzMzE5SDQuMjAxN0M0Ljg2
-  MzY0IDQuMDMzMTkgNS40Mjc1NiA0LjE1OTYyIDUuODkzNDcgNC40MTI0NkM2LjM1
-  OTM4IDQuNjYyNDYgNi43MTQ0OSA1LjAxMDQ3IDYuOTU4ODEgNS40NTY0OUM3LjIw
-  NTk3IDUuODk5NjcgNy4zMjk1NSA2LjQxMTA0IDcuMzI5NTUgNi45OTA1OEM3LjMy
-  OTU1IDcuNTcwMTMgNy4yMDQ1NSA4LjA4MTQ5IDYuOTU0NTUgOC41MjQ2N0M2Ljcw
-  NDU1IDguOTY3ODUgNi4zNDIzMyA5LjMxMzAyIDUuODY3OSA5LjU2MDE4QzUuMzk2
-  MzEgOS44MDczNCA0LjgyNTI4IDkuOTMwOTIgNC4xNTQ4MyA5LjkzMDkySDEuOTYw
-  MjNWOC40NTIyM0gzLjg1NjUzQzQuMjExNjUgOC40NTIyMyA0LjUwNDI2IDguMzkx
-  MTUgNC43MzQzOCA4LjI2ODk5QzQuOTY3MzMgOC4xNDM5OSA1LjE0MDYzIDcuOTcy
-  MTIgNS4yNTQyNiA3Ljc1MzM3QzUuMzcwNzQgNy41MzE3NyA1LjQyODk4IDcuMjc3
-  NTEgNS40Mjg5OCA2Ljk5MDU4QzUuNDI4OTggNi43MDA4MSA1LjM3MDc0IDYuNDQ3
-  OTcgNS4yNTQyNiA2LjIzMjA2QzUuMTQwNjMgNi4wMTMzMSA0Ljk2NzMzIDUuODQ0
-  MjcgNC43MzQzOCA1LjcyNDk2QzQuNTAxNDIgNS42MDI4IDQuMjA1OTcgNS41NDE3
-  MiAzLjg0ODAxIDUuNTQxNzJIMi42MDM2OVYxMi43NjA1SDAuNzU4NTIzWk0xMS4z
-  NDU5IDEyLjg4ODNDMTAuNjgzOSAxMi44ODgzIDEwLjExMTUgMTIuNzQ3NyA5LjYy
-  ODU1IDEyLjQ2NjRDOS4xNDg0NCAxMi4xODIzIDguNzc3NyAxMS43ODc1IDguNTE2
-  MzQgMTEuMjgxOEM4LjI1NDk3IDEwLjc3MzMgOC4xMjQyOSAxMC4xODM4IDguMTI0
-  MjkgOS41MTMzMUM4LjEyNDI5IDguODM3MTcgOC4yNTQ5NyA4LjI0NjI2IDguNTE2
-  MzQgNy43NDA1OEM4Ljc3NzcgNy4yMzIwNiA5LjE0ODQ0IDYuODM3MTcgOS42Mjg1
-  NSA2LjU1NTkyQzEwLjExMTUgNi4yNzE4MyAxMC42ODM5IDYuMTI5NzkgMTEuMzQ1
-  OSA2LjEyOTc5QzEyLjAwNzggNi4xMjk3OSAxMi41Nzg4IDYuMjcxODMgMTMuMDU4
-  OSA2LjU1NTkyQzEzLjU0MTkgNi44MzcxNyAxMy45MTQxIDcuMjMyMDYgMTQuMTc1
-  NCA3Ljc0MDU4QzE0LjQzNjggOC4yNDYyNiAxNC41Njc1IDguODM3MTcgMTQuNTY3
-  NSA5LjUxMzMxQzE0LjU2NzUgMTAuMTgzOCAxNC40MzY4IDEwLjc3MzMgMTQuMTc1
-  NCAxMS4yODE4QzEzLjkxNDEgMTEuNzg3NSAxMy41NDE5IDEyLjE4MjMgMTMuMDU4
-  OSAxMi40NjY0QzEyLjU3ODggMTIuNzQ3NyAxMi4wMDc4IDEyLjg4ODMgMTEuMzQ1
-  OSAxMi44ODgzWk0xMS4zNTQ0IDExLjQ4MjFDMTEuNjU1NSAxMS40ODIxIDExLjkw
-  NyAxMS4zOTY4IDEyLjEwODcgMTEuMjI2NEMxMi4zMTA0IDExLjA1MzEgMTIuNDYy
-  NCAxMC44MTczIDEyLjU2NDYgMTAuNTE5QzEyLjY2OTcgMTAuMjIwNyAxMi43MjIz
-  IDkuODgxMjEgMTIuNzIyMyA5LjUwMDUyQzEyLjcyMjMgOS4xMTk4NCAxMi42Njk3
-  IDguNzgwMzUgMTIuNTY0NiA4LjQ4MjA2QzEyLjQ2MjQgOC4xODM3NiAxMi4zMTA0
-  IDcuOTQ3OTcgMTIuMTA4NyA3Ljc3NDY3QzExLjkwNyA3LjYwMTM4IDExLjY1NTUg
-  Ny41MTQ3MyAxMS4zNTQ0IDcuNTE0NzNDMTEuMDUwNCA3LjUxNDczIDEwLjc5NDcg
-  Ny42MDEzOCAxMC41ODc0IDcuNzc0NjdDMTAuMzgyOCA3Ljk0Nzk3IDEwLjIyOCA4
-  LjE4Mzc2IDEwLjEyMjkgOC40ODIwNkMxMC4wMjA2IDguNzgwMzUgOS45Njk0NiA5
-  LjExOTg0IDkuOTY5NDYgOS41MDA1MkM5Ljk2OTQ2IDkuODgxMjEgMTAuMDIwNiAx
-  MC4yMjA3IDEwLjEyMjkgMTAuNTE5QzEwLjIyOCAxMC44MTczIDEwLjM4MjggMTEu
-  MDUzMSAxMC41ODc0IDExLjIyNjRDMTAuNzk0NyAxMS4zOTY4IDExLjA1MDQgMTEu
-  NDgyMSAxMS4zNTQ0IDExLjQ4MjFaTTE2Ljg3NSAxMi43NjA1TDE1LjA5MzggNi4y
-  MTUwMUgxNi45MzA0TDE3Ljk0NDYgMTAuNjEyN0gxOC4wMDQzTDE5LjA2MTEgNi4y
-  MTUwMUgyMC44NjM2TDIxLjkzNzUgMTAuNTg3MkgyMS45OTI5TDIyLjk5MDEgNi4y
-  MTUwMUgyNC44MjI0TDIzLjA0NTUgMTIuNzYwNUgyMS4xMjM2TDE5Ljk5ODYgOC42
-  NDM5OUgxOS45MTc2TDE4Ljc5MjYgMTIuNzYwNUgxNi44NzVaTTI4LjYwOTcgMTIu
-  ODg4M0MyNy45MzY0IDEyLjg4ODMgMjcuMzU2OSAxMi43NTE5IDI2Ljg3MTEgMTIu
-  NDc5MkMyNi4zODgxIDEyLjIwMzYgMjYuMDE2IDExLjgxNDQgMjUuNzU0NiAxMS4z
-  MTE2QzI1LjQ5MzMgMTAuODA1OSAyNS4zNjI2IDEwLjIwNzkgMjUuMzYyNiA5LjUx
-  NzU3QzI1LjM2MjYgOC44NDQyNyAyNS40OTMzIDguMjUzMzcgMjUuNzU0NiA3Ljc0
-  NDg0QzI2LjAxNiA3LjIzNjMyIDI2LjM4MzkgNi44NDAwMSAyNi44NTgzIDYuNTU1
-  OTJDMjcuMzM1NiA2LjI3MTgzIDI3Ljg5NTIgNi4xMjk3OSAyOC41MzczIDYuMTI5
-  NzlDMjguOTY5MSA2LjEyOTc5IDI5LjM3MTEgNi4xOTkzOSAyOS43NDMzIDYuMzM4
-  NTlDMzAuMTE4MyA2LjQ3NDk2IDMwLjQ0NSA2LjY4MDkyIDMwLjcyMzQgNi45NTY0
-  OUMzMS4wMDQ2IDcuMjMyMDYgMzEuMjIzNCA3LjU3ODY1IDMxLjM3OTYgNy45OTYy
-  NkMzMS41MzU5IDguNDExMDQgMzEuNjE0IDguODk2ODMgMzEuNjE0IDkuNDUzNjVW
-  OS45NTIyM0gyNi4wODdWOC44MjcyM0gyOS45MDUyQzI5LjkwNTIgOC41NjU4NyAy
-  OS44NDg0IDguMzM0MzMgMjkuNzM0NyA4LjEzMjYzQzI5LjYyMTEgNy45MzA5MiAy
-  OS40NjM0IDcuNzczMjUgMjkuMjYxNyA3LjY1OTYyQzI5LjA2MjkgNy41NDMxNCAy
-  OC44MzEzIDcuNDg0OSAyOC41NjcxIDcuNDg0OUMyOC4yOTE1IDcuNDg0OSAyOC4w
-  NDcyIDcuNTQ4ODIgMjcuODM0MiA3LjY3NjY2QzI3LjYyMzkgNy44MDE2NiAyNy40
-  NTkyIDcuOTcwNjkgMjcuMzM5OCA4LjE4Mzc2QzI3LjIyMDUgOC4zOTM5OSAyNy4x
-  NTk0IDguNjI4MzcgMjcuMTU2NiA4Ljg4Njg5VjkuOTU2NDlDMjcuMTU2NiAxMC4y
-  ODA0IDI3LjIxNjMgMTAuNTYwMiAyNy4zMzU2IDEwLjc5NkMyNy40NTc3IDExLjAz
-  MTggMjcuNjI5NiAxMS4yMTM2IDI3Ljg1MTIgMTEuMzQxNEMyOC4wNzI4IDExLjQ2
-  OTMgMjguMzM1NiAxMS41MzMyIDI4LjYzOTYgMTEuNTMzMkMyOC44NDEzIDExLjUz
-  MzIgMjkuMDI1OSAxMS41MDQ4IDI5LjE5MzUgMTEuNDQ4QzI5LjM2MTIgMTEuMzkx
-  MSAyOS41MDQ2IDExLjMwNTkgMjkuNjIzOSAxMS4xOTIzQzI5Ljc0MzMgMTEuMDc4
-  NiAyOS44MzQyIDEwLjkzOTQgMjkuODk2NyAxMC43NzQ3TDMxLjU3NTYgMTAuODg1
-  NUMzMS40OTA0IDExLjI4ODkgMzEuMzE1NyAxMS42NDExIDMxLjA1MTUgMTEuOTQy
-  M0MzMC43OTAxIDEyLjI0MDYgMzAuNDUyMSAxMi40NzM1IDMwLjAzNzMgMTIuNjQx
-  MUMyOS42MjU0IDEyLjgwNTkgMjkuMTQ5NSAxMi44ODgzIDI4LjYwOTcgMTIuODg4
-  M1pNMzIuNzk4NyAxMi43NjA1VjYuMjE1MDFIMzQuNTU4NlY3LjM1NzA2SDM0LjYy
-  NjhDMzQuNzQ2MSA2Ljk1MDgxIDM0Ljk0NjQgNi42NDM5OSAzNS4yMjc2IDYuNDM2
-  NkMzNS41MDg5IDYuMjI2MzggMzUuODMyNyA2LjEyMTI2IDM2LjE5OTIgNi4xMjEy
-  NkMzNi4yOTAxIDYuMTIxMjYgMzYuMzg4MSA2LjEyNjk0IDM2LjQ5MzMgNi4xMzgz
-  MUMzNi41OTg0IDYuMTQ5NjcgMzYuNjkwNyA2LjE2NTMgMzYuNzcwMiA2LjE4NTE4
-  VjcuNzk1OThDMzYuNjg1IDcuNzcwNDEgMzYuNTY3MSA3Ljc0NzY4IDM2LjQxNjUg
-  Ny43Mjc4QzM2LjI2NiA3LjcwNzkxIDM2LjEyODIgNy42OTc5NyAzNi4wMDMyIDcu
-  Njk3OTdDMzUuNzM2MiA3LjY5Nzk3IDM1LjQ5NzUgNy43NTYyMSAzNS4yODczIDcu
-  ODcyNjhDMzUuMDc5OSA3Ljk4NjMyIDM0LjkxNTEgOC4xNDU0MSAzNC43OTMgOC4z
-  NDk5NkMzNC42NzM3IDguNTU0NSAzNC42MTQgOC43OTAzIDM0LjYxNCA5LjA1NzM0
-  VjEyLjc2MDVIMzIuNzk4N1pNNDAuMzg3MSAxMi44ODgzQzM5LjcxMzggMTIuODg4
-  MyAzOS4xMzQyIDEyLjc1MTkgMzguNjQ4NCAxMi40NzkyQzM4LjE2NTUgMTIuMjAz
-  NiAzNy43OTMzIDExLjgxNDQgMzcuNTMyIDExLjMxMTZDMzcuMjcwNiAxMC44MDU5
-  IDM3LjEzOTkgMTAuMjA3OSAzNy4xMzk5IDkuNTE3NTdDMzcuMTM5OSA4Ljg0NDI3
-  IDM3LjI3MDYgOC4yNTMzNyAzNy41MzIgNy43NDQ4NEMzNy43OTMzIDcuMjM2MzIg
-  MzguMTYxMiA2Ljg0MDAxIDM4LjYzNTcgNi41NTU5MkMzOS4xMTI5IDYuMjcxODMg
-  MzkuNjcyNiA2LjEyOTc5IDQwLjMxNDYgNi4xMjk3OUM0MC43NDY0IDYuMTI5Nzkg
-  NDEuMTQ4NCA2LjE5OTM5IDQxLjUyMDYgNi4zMzg1OUM0MS44OTU2IDYuNDc0OTYg
-  NDIuMjIyMyA2LjY4MDkyIDQyLjUwMDcgNi45NTY0OUM0Mi43ODIgNy4yMzIwNiA0
-  My4wMDA3IDcuNTc4NjUgNDMuMTU3IDcuOTk2MjZDNDMuMzEzMiA4LjQxMTA0IDQz
-  LjM5MTMgOC44OTY4MyA0My4zOTEzIDkuNDUzNjVWOS45NTIyM0gzNy44NjQzVjgu
-  ODI3MjNINDEuNjgyNUM0MS42ODI1IDguNTY1ODcgNDEuNjI1NyA4LjMzNDMzIDQx
-  LjUxMjEgOC4xMzI2M0M0MS4zOTg0IDcuOTMwOTIgNDEuMjQwOCA3Ljc3MzI1IDQx
-  LjAzOTEgNy42NTk2MkM0MC44NDAyIDcuNTQzMTQgNDAuNjA4NyA3LjQ4NDkgNDAu
-  MzQ0NSA3LjQ4NDlDNDAuMDY4OSA3LjQ4NDkgMzkuODI0NiA3LjU0ODgyIDM5LjYx
-  MTUgNy42NzY2NkMzOS40MDEzIDcuODAxNjYgMzkuMjM2NSA3Ljk3MDY5IDM5LjEx
-  NzIgOC4xODM3NkMzOC45OTc5IDguMzkzOTkgMzguOTM2OCA4LjYyODM3IDM4Ljkz
-  MzkgOC44ODY4OVY5Ljk1NjQ5QzM4LjkzMzkgMTAuMjgwNCAzOC45OTM2IDEwLjU2
-  MDIgMzkuMTEyOSAxMC43OTZDMzkuMjM1MSAxMS4wMzE4IDM5LjQwNyAxMS4yMTM2
-  IDM5LjYyODYgMTEuMzQxNEMzOS44NTAxIDExLjQ2OTMgNDAuMTEyOSAxMS41MzMy
-  IDQwLjQxNjkgMTEuNTMzMkM0MC42MTg2IDExLjUzMzIgNDAuODAzMyAxMS41MDQ4
-  IDQwLjk3MDkgMTEuNDQ4QzQxLjEzODUgMTEuMzkxMSA0MS4yODIgMTEuMzA1OSA0
-  MS40MDEzIDExLjE5MjNDNDEuNTIwNiAxMS4wNzg2IDQxLjYxMTUgMTAuOTM5NCA0
-  MS42NzQgMTAuNzc0N0w0My4zNTMgMTAuODg1NUM0My4yNjc4IDExLjI4ODkgNDMu
-  MDkzIDExLjY0MTEgNDIuODI4OCAxMS45NDIzQzQyLjU2NzUgMTIuMjQwNiA0Mi4y
-  Mjk0IDEyLjQ3MzUgNDEuODE0NiAxMi42NDExQzQxLjQwMjcgMTIuODA1OSA0MC45
-  MjY4IDEyLjg4ODMgNDAuMzg3MSAxMi44ODgzWk00Ni45ODc5IDEyLjg2N0M0Ni40
-  OTA4IDEyLjg2NyA0Ni4wNDA1IDEyLjczOTIgNDUuNjM3MSAxMi40ODM1QzQ1LjIz
-  NjUgMTIuMjI1IDQ0LjkxODMgMTEuODQ1NyA0NC42ODI1IDExLjM0NTdDNDQuNDQ5
-  NiAxMC44NDI5IDQ0LjMzMzEgMTAuMjI2NCA0NC4zMzMxIDkuNDk2MjZDNDQuMzMz
-  MSA4Ljc0NjI2IDQ0LjQ1MzggOC4xMjI2OCA0NC42OTUzIDcuNjI1NTJDNDQuOTM2
-  OCA3LjEyNTUyIDQ1LjI1NzggNi43NTE5NCA0NS42NTg0IDYuNTA0NzlDNDYuMDYx
-  OCA2LjI1NDc5IDQ2LjUwMzYgNi4xMjk3OSA0Ni45ODM3IDYuMTI5NzlDNDcuMzUw
-  MSA2LjEyOTc5IDQ3LjY1NTUgNi4xOTIyOSA0Ny44OTk5IDYuMzE3MjlDNDguMTQ3
-  IDYuNDM5NDQgNDguMzQ1OSA2LjU5Mjg1IDQ4LjQ5NjQgNi43Nzc1MUM0OC42NDk5
-  IDYuOTU5MzMgNDguNzY2MyA3LjEzODMxIDQ4Ljg0NTkgNy4zMTQ0NEg0OC45MDEz
-  VjQuMDMzMTlINTAuNzEyNFYxMi43NjA1SDQ4LjkyMjZWMTEuNzEyMkg0OC44NDU5
-  QzQ4Ljc2MDcgMTEuODk0IDQ4LjYzOTkgMTIuMDc0NCA0OC40ODM3IDEyLjI1MzRD
-  NDguMzMwMyAxMi40Mjk1IDQ4LjEzIDEyLjU3NTggNDcuODgyOCAxMi42OTIzQzQ3
-  LjYzODUgMTIuODA4OCA0Ny4zNDAyIDEyLjg2NyA0Ni45ODc5IDEyLjg2N1pNNDcu
-  NTYzMiAxMS40MjI0QzQ3Ljg1NTggMTEuNDIyNCA0OC4xMDMgMTEuMzQyOSA0OC4z
-  MDQ3IDExLjE4MzhDNDguNTA5MiAxMS4wMjE4IDQ4LjY2NTUgMTAuNzk2IDQ4Ljc3
-  MzQgMTAuNTA2MkM0OC44ODQyIDEwLjIxNjQgNDguOTM5NiA5Ljg3Njk0IDQ4Ljkz
-  OTYgOS40ODc3NEM0OC45Mzk2IDkuMDk4NTQgNDguODg1NyA4Ljc2MDQ3IDQ4Ljc3
-  NzcgOC40NzM1NEM0OC42Njk3IDguMTg2NiA0OC41MTM1IDcuOTY1MDEgNDguMzA4
-  OSA3LjgwODc2QzQ4LjEwNDQgNy42NTI1MSA0Ny44NTU4IDcuNTc0MzkgNDcuNTYz
-  MiA3LjU3NDM5QzQ3LjI2NDkgNy41NzQzOSA0Ny4wMTM1IDcuNjU1MzUgNDYuODA4
-  OSA3LjgxNzI5QzQ2LjYwNDQgNy45NzkyMiA0Ni40NDk2IDguMjAzNjUgNDYuMzQ0
-  NSA4LjQ5MDU4QzQ2LjIzOTMgOC43Nzc1MSA0Ni4xODY4IDkuMTA5OSA0Ni4xODY4
-  IDkuNDg3NzRDNDYuMTg2OCA5Ljg2ODQyIDQ2LjIzOTMgMTAuMjA1MSA0Ni4zNDQ1
-  IDEwLjQ5NzdDNDYuNDUyNCAxMC43ODc1IDQ2LjYwNzIgMTEuMDE0NyA0Ni44MDg5
-  IDExLjE3OTVDNDcuMDEzNSAxMS4zNDE0IDQ3LjI2NDkgMTEuNDIyNCA0Ny41NjMy
-  IDExLjQyMjRaTTU1LjAxNjMgMTIuNzYwNVY0LjAzMzE5SDU2LjgzMTdWNy4zMTQ0
-  NEg1Ni44ODcxQzU2Ljk2NjYgNy4xMzgzMSA1Ny4wODE3IDYuOTU5MzMgNTcuMjMy
-  MiA2Ljc3NzUxQzU3LjM4NTcgNi41OTI4NSA1Ny41ODQ1IDYuNDM5NDQgNTcuODI4
-  OCA2LjMxNzI5QzU4LjA3NiA2LjE5MjI5IDU4LjM4MjggNi4xMjk3OSA1OC43NDkz
-  IDYuMTI5NzlDNTkuMjI2NiA2LjEyOTc5IDU5LjY2NjkgNi4yNTQ3OSA2MC4wNzAz
-  IDYuNTA0NzlDNjAuNDczNyA2Ljc1MTk0IDYwLjc5NjIgNy4xMjU1MiA2MS4wMzc2
-  IDcuNjI1NTJDNjEuMjc5MSA4LjEyMjY4IDYxLjM5OTkgOC43NDYyNiA2MS4zOTk5
-  IDkuNDk2MjZDNjEuMzk5OSAxMC4yMjY0IDYxLjI4MiAxMC44NDI5IDYxLjA0NjIg
-  MTEuMzQ1N0M2MC44MTMyIDExLjg0NTcgNjAuNDk1IDEyLjIyNSA2MC4wOTE2IDEy
-  LjQ4MzVDNTkuNjkxMSAxMi43MzkyIDU5LjI0MjIgMTIuODY3IDU4Ljc0NSAxMi44
-  NjdDNTguMzkyOCAxMi44NjcgNTguMDkzIDEyLjgwODggNTcuODQ1OSAxMi42OTIz
-  QzU3LjYwMTYgMTIuNTc1OCA1Ny40MDEzIDEyLjQyOTUgNTcuMjQ1IDEyLjI1MzRD
-  NTcuMDg4OCAxMi4wNzQ0IDU2Ljk2OTUgMTEuODk0IDU2Ljg4NzEgMTEuNzEyMkg1
-  Ni44MDYxVjEyLjc2MDVINTUuMDE2M1pNNTYuNzkzMyA5LjQ4Nzc0QzU2Ljc5MzMg
-  OS44NzY5NCA1Ni44NDczIDEwLjIxNjQgNTYuOTU1MyAxMC41MDYyQzU3LjA2MzIg
-  MTAuNzk2IDU3LjIxOTUgMTEuMDIxOCA1Ny40MjQgMTEuMTgzOEM1Ny42Mjg2IDEx
-  LjM0MjkgNTcuODc3MSAxMS40MjI0IDU4LjE2OTcgMTEuNDIyNEM1OC40NjUyIDEx
-  LjQyMjQgNTguNzE1MiAxMS4zNDE0IDU4LjkxOTcgMTEuMTc5NUM1OS4xMjQzIDEx
-  LjAxNDcgNTkuMjc5MSAxMC43ODc1IDU5LjM4NDIgMTAuNDk3N0M1OS40OTIyIDEw
-  LjIwNTEgNTkuNTQ2MiA5Ljg2ODQyIDU5LjU0NjIgOS40ODc3NEM1OS41NDYyIDku
-  MTA5OSA1OS40OTM2IDguNzc3NTEgNTkuMzg4NSA4LjQ5MDU4QzU5LjI4MzQgOC4y
-  MDM2NSA1OS4xMjg2IDcuOTc5MjIgNTguOTI0IDcuODE3MjlDNTguNzE5NSA3LjY1
-  NTM1IDU4LjQ2OCA3LjU3NDM5IDU4LjE2OTcgNy41NzQzOUM1Ny44NzQzIDcuNTc0
-  MzkgNTcuNjI0MyA3LjY1MjUxIDU3LjQxOTcgNy44MDg3NkM1Ny4yMTggNy45NjUw
-  MSA1Ny4wNjMyIDguMTg2NiA1Ni45NTUzIDguNDczNTRDNTYuODQ3MyA4Ljc2MDQ3
-  IDU2Ljc5MzMgOS4wOTg1NCA1Ni43OTMzIDkuNDg3NzRaTTYzLjUyMSAxNS4yMTVD
-  NjMuMjkwOCAxNS4yMTUgNjMuMDc0OSAxNS4xOTY1IDYyLjg3MzIgMTUuMTU5NkM2
-  Mi42NzQ0IDE1LjEyNTUgNjIuNTA5NiAxNS4wODE1IDYyLjM3ODkgMTUuMDI3NUw2
-  Mi43ODggMTMuNjcyNEM2My4wMDExIDEzLjczNzcgNjMuMTkyOCAxMy43NzMzIDYz
-  LjM2MzMgMTMuNzc4OUM2My41MzY2IDEzLjc4NDYgNjMuNjg1NyAxMy43NDQ4IDYz
-  LjgxMDcgMTMuNjU5NkM2My45Mzg2IDEzLjU3NDQgNjQuMDQyMyAxMy40Mjk1IDY0
-  LjEyMTggMTMuMjI1TDY0LjIyODMgMTIuOTQ4TDYxLjg4MDMgNi4yMTUwMUg2My43
-  ODk0TDY1LjE0NDUgMTEuMDIxOEg2NS4yMTI3TDY2LjU4MDYgNi4yMTUwMUg2OC41
-  MDI1TDY1Ljk1ODUgMTMuNDY3OUM2NS44MzYzIDEzLjgyMDEgNjUuNjcwMSAxNC4x
-  MjY5IDY1LjQ1OTkgMTQuMzg4M0M2NS4yNTI1IDE0LjY1MjUgNjQuOTg5NyAxNC44
-  NTU2IDY0LjY3MTUgMTQuOTk3N0M2NC4zNTMzIDE1LjE0MjYgNjMuOTY5OCAxNS4y
-  MTUgNjMuNTIxIDE1LjIxNVoiIGZpbGw9IndoaXRlIi8+CjxnIGNsaXAtcGF0aD0i
-  dXJsKCNjbGlwMF83XzE2KSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xp
-  cC1ydWxlPSJldmVub2RkIiBkPSJNOTAuMDU1NSAxMy45NzU3VjQuODM2NDRDOTAu
-  MDU1NSAzLjU3NDY5IDg5LjAzMjUgMi41NTE3MSA4Ny43NzA4IDIuNTUxNzFDODYu
-  NTA4OCAyLjU1MTcxIDg1LjQ4NTggMy41NzQ2OSA4NS40ODU5IDQuODM2NDRMODUu
-  NDg1OCAxMy45NzU4Qzg1LjQ4NTggMTUuMjM3NiA4Ni41MDg4IDE2LjI2MDYgODcu
-  NzcwNyAxNi4yNjA1Qzg5LjAzMjYgMTYuMjYwNSA5MC4wNTU1IDE1LjIzNzYgOTAu
-  MDU1NSAxMy45NzU3WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJl
-  dmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDkuNzQ3IDIuNTUxOEwx
-  MDMuMjg0IDIuNTUxNzFDMTAyLjAyMiAyLjU1MTcxIDEwMC45OTkgMy41NzQ2OSAx
-  MDAuOTk5IDQuODM2NDRDMTAwLjk5OSA2LjA5ODM3IDEwMi4wMjIgNy4xMjEzNSAx
-  MDMuMjg0IDcuMTIxMzVIMTA0LjIzMVYxMy45NzU2QzEwNC4yMzEgMTUuMjM3NiAx
-  MDUuMjU0IDE2LjI2MDUgMTA2LjUxNiAxNi4yNjA1QzEwNy43NzcgMTYuMjYwNSAx
-  MDguODAxIDE1LjIzNzYgMTA4LjgwMSAxMy45NzU2VjcuMTIxMjZIMTA5Ljc0N0Mx
-  MTEuMDA5IDcuMTIxMzUgMTEyLjAzMiA2LjA5ODM3IDExMi4wMzIgNC44MzY1M0Mx
-  MTIuMDMyIDMuNTc0NzggMTExLjAwOSAyLjU1MTggMTA5Ljc0NyAyLjU1MThaIiBm
-  aWxsPSJ3aGl0ZSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVs
-  ZT0iZXZlbm9kZCIgZD0iTTgyLjI5ODUgMTYuMjYwNUM4My41NjA0IDE2LjI2MDUg
-  ODQuNTgzMyAxNS4yMzc1IDg0LjU4MzMgMTMuOTc1NUM4NC41ODMzIDEyLjcxMzgg
-  ODMuNTYwMyAxMS42OTA4IDgyLjI5ODUgMTEuNjkwOEg3OS44NTQ0Qzc4LjU5MjUg
-  MTEuNjkwOCA3Ny41Njk2IDEwLjY2NzkgNzcuNTY5NiA5LjQwNjA4Qzc3LjU2OTYg
-  OC4xNDQxNSA3OC41OTI1IDcuMTIxMTcgNzkuODU0NSA3LjEyMTE3SDgyLjI5ODVD
-  ODMuNTYwMyA3LjEyMTE3IDg0LjU4MzMgNi4wOTgxOSA4NC41ODMzIDQuODM2MjVD
-  ODQuNTgzMyAzLjU3NDUxIDgzLjU2MDMgMi41NTE1MiA4Mi4yOTg1IDIuNTUxNTJI
-  NzkuODU0NEM3Ni4wNjg4IDIuNTUxNzEgNzMgNS42MjA1NyA3MyA5LjQwNjE4Qzcz
-  IDEzLjE5MTcgNzYuMDY4OCAxNi4yNjA1IDc5Ljg1NDQgMTYuMjYwNUg4Mi4yOTg1
-  WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlw
-  LXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05MS43OTMxIDkuMDU4MzZDOTEuMjY3MyA5Ljgw
-  MjY1IDkwLjk1NzQgMTAuNzEwMyA5MC45NTc0IDExLjY5MDlDOTAuOTU3NCAxNC4y
-  MTQ2IDkzLjAwMzUgMTYuMjYwNSA5NS41MjY5IDE2LjI2MDVDOTYuNTA3NiAxNi4y
-  NjA1IDk3LjQxNTIgMTUuOTUwNiA5OC4xNTk2IDE1LjQyNDhMOTEuNzkzMSA5LjA1
-  ODM2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBj
-  bGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDIuNjU5IDEyLjM2MDJMOTQuMTczOCAz
-  Ljg5NjQ1QzkzLjQzNzggMy4xNjA1MSA5My40NDcyIDEuOTU4MDYgOTQuMTk0NSAx
-  LjIxMDc1Qzk0LjI4ODIgMS4xMTcwMiA5NC4zODk4IDEuMDM2MjQgOTQuNDk2IDAu
-  OTY1NzQxQzk0LjAwODEgMS43MDU5OSA5NC4wODIzIDIuNzAzNDUgOTQuNzI0NiAz
-  LjM0NTY2TDk5LjI1NjkgNy44NjY2NkM5OS43ODUxIDcuMTIxMjcgMTAwLjA5NyA2
-  LjIxMTQ3IDEwMC4wOTcgNS4yMjgzM0MxMDAuMDk3IDIuNzA0NzQgOTguMDUwOCAw
-  LjY1ODg2NCA5NS41MjY5IDAuNjU4ODY0QzkzLjAwMzQgMC42NTg4NjQgOTAuOTU3
-  NSAyLjcwNDc0IDkwLjk1NzUgNS4yMjgzM0M5MC45NTc1IDYuNDkwMzUgOTEuNDY5
-  IDcuNjMyNjcgOTIuMjk1OSA4LjQ1OTY3TDk4Ljc1ODMgMTQuOTIyMUw5OS40Mjc0
-  IDE1LjU5MTJDMTAwLjMyIDE2LjQ4MzYgMTAxLjc2NiAxNi40ODM2IDEwMi42NTkg
-  MTUuNTkxMkMxMDMuNTUxIDE0LjY5OSAxMDMuNTUxIDEzLjI1MjMgMTAyLjY1OSAx
-  Mi4zNjAyWiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlk
-  PSJjbGlwMF83XzE2Ij4KPHJlY3Qgd2lkdGg9IjM5LjAzMTciIGhlaWdodD0iMTYi
-  IGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MyAwLjI2MDQ2OCki
-  Lz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K" alt="Logo Ligero FigTools" width="102.87" height="37.53">
-</form>
+    IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmci
+    Pgo8cGF0aCBkPSJNMC43NTg1MjMgMTIuNzYwNVY0LjAzMzE5SDQuMjAxN0M0Ljg2
+    MzY0IDQuMDMzMTkgNS40Mjc1NiA0LjE1OTYyIDUuODkzNDcgNC40MTI0NkM2LjM1
+    OTM4IDQuNjYyNDYgNi43MTQ0OSA1LjAxMDQ3IDYuOTU4ODEgNS40NTY0OUM3LjIw
+    NTk3IDUuODk5NjcgNy4zMjk1NSA2LjQxMTA0IDcuMzI5NTUgNi45OTA1OEM3LjMy
+    OTU1IDcuNTcwMTMgNy4yMDQ1NSA4LjA4MTQ5IDYuOTU0NTUgOC41MjQ2N0M2Ljcw
+    NDU1IDguOTY3ODUgNi4zNDIzMyA5LjMxMzAyIDUuODY3OSA5LjU2MDE4QzUuMzk2
+    MzEgOS44MDczNCA0LjgyNTI4IDkuOTMwOTIgNC4xNTQ4MyA5LjkzMDkySDEuOTYw
+    MjNWOC40NTIyM0gzLjg1NjUzQzQuMjExNjUgOC40NTIyMyA0LjUwNDI2IDguMzkx
+    MTUgNC43MzQzOCA4LjI2ODk5QzQuOTY3MzMgOC4xNDM5OSA1LjE0MDYzIDcuOTcy
+    MTIgNS4yNTQyNiA3Ljc1MzM3QzUuMzcwNzQgNy41MzE3NyA1LjQyODk4IDcuMjc3
+    NTEgNS40Mjg5OCA2Ljk5MDU4QzUuNDI4OTggNi43MDA4MSA1LjM3MDc0IDYuNDQ3
+    OTcgNS4yNTQyNiA2LjIzMjA2QzUuMTQwNjMgNi4wMTMzMSA0Ljk2NzMzIDUuODQ0
+    MjcgNC43MzQzOCA1LjcyNDk2QzQuNTAxNDIgNS42MDI4IDQuMjA1OTcgNS41NDE3
+    MiAzLjg0ODAxIDUuNTQxNzJIMi42MDM2OVYxMi43NjA1SDAuNzU4NTIzWk0xMS4z
+    NDU5IDEyLjg4ODNDMTAuNjgzOSAxMi44ODgzIDEwLjExMTUgMTIuNzQ3NyA5LjYy
+    ODU1IDEyLjQ2NjRDOS4xNDg0NCAxMi4xODIzIDguNzc3NyAxMS43ODc1IDguNTE2
+    MzQgMTEuMjgxOEM4LjI1NDk3IDEwLjc3MzMgOC4xMjQyOSAxMC4xODM4IDguMTI0
+    MjkgOS41MTMzMUM4LjEyNDI5IDguODM3MTcgOC4yNTQ5NyA4LjI0NjI2IDguNTE2
+    MzQgNy43NDA1OEM4Ljc3NzcgNy4yMzIwNiA5LjE0ODQ0IDYuODM3MTcgOS42Mjg1
+    NSA2LjU1NTkyQzEwLjExMTUgNi4yNzE4MyAxMC42ODM5IDYuMTI5NzkgMTEuMzQ1
+    OSA2LjEyOTc5QzEyLjAwNzggNi4xMjk3OSAxMi41Nzg4IDYuMjcxODMgMTMuMDU4
+    OSA2LjU1NTkyQzEzLjU0MTkgNi44MzcxNyAxMy45MTQxIDcuMjMyMDYgMTQuMTc1
+    NCA3Ljc0MDU4QzE0LjQzNjggOC4yNDYyNiAxNC41Njc1IDguODM3MTcgMTQuNTY3
+    NSA5LjUxMzMxQzE0LjU2NzUgMTAuMTgzOCAxNC40MzY4IDEwLjc3MzMgMTQuMTc1
+    NCAxMS4yODE4QzEzLjkxNDEgMTEuNzg3NSAxMy41NDE5IDEyLjE4MjMgMTMuMDU4
+    OSAxMi40NjY0QzEyLjU3ODggMTIuNzQ3NyAxMi4wMDc4IDEyLjg4ODMgMTEuMzQ1
+    OSAxMi44ODgzWk0xMS4zNTQ0IDExLjQ4MjFDMTEuNjU1NSAxMS40ODIxIDExLjkw
+    NyAxMS4zOTY4IDEyLjEwODcgMTEuMjI2NEMxMi4zMTA0IDExLjA1MzEgMTIuNDYy
+    NCAxMC44MTczIDEyLjU2NDYgMTAuNTE5QzEyLjY2OTcgMTAuMjIwNyAxMi43MjIz
+    IDkuODgxMjEgMTIuNzIyMyA5LjUwMDUyQzEyLjcyMjMgOS4xMTk4NCAxMi42Njk3
+    IDguNzgwMzUgMTIuNTY0NiA4LjQ4MjA2QzEyLjQ2MjQgOC4xODM3NiAxMi4zMTA0
+    IDcuOTQ3OTcgMTIuMTA4NyA3Ljc3NDY3QzExLjkwNyA3LjYwMTM4IDExLjY1NTUg
+    Ny41MTQ3MyAxMS4zNTQ0IDcuNTE0NzNDMTEuMDUwNCA3LjUxNDczIDEwLjc5NDcg
+    Ny42MDEzOCAxMC41ODc0IDcuNzc0NjdDMTAuMzgyOCA3Ljk0Nzk3IDEwLjIyOCA4
+    LjE4Mzc2IDEwLjEyMjkgOC40ODIwNkMxMC4wMjA2IDguNzgwMzUgOS45Njk0NiA5
+    LjExOTg0IDkuOTY5NDYgOS41MDA1MkM5Ljk2OTQ2IDkuODgxMjEgMTAuMDIwNiAx
+    MC4yMjA3IDEwLjEyMjkgMTAuNTE5QzEwLjIyOCAxMC44MTczIDEwLjM4MjggMTEu
+    MDUzMSAxMC41ODc0IDExLjIyNjRDMTAuNzk0NyAxMS4zOTY4IDExLjA1MDQgMTEu
+    NDgyMSAxMS4zNTQ0IDExLjQ4MjFaTTE2Ljg3NSAxMi43NjA1TDE1LjA5MzggNi4y
+    MTUwMUgxNi45MzA0TDE3Ljk0NDYgMTAuNjEyN0gxOC4wMDQzTDE5LjA2MTEgNi4y
+    MTUwMUgyMC44NjM2TDIxLjkzNzUgMTAuNTg3MkgyMS45OTI5TDIyLjk5MDEgNi4y
+    MTUwMUgyNC44MjI0TDIzLjA0NTUgMTIuNzYwNUgyMS4xMjM2TDE5Ljk5ODYgOC42
+    NDM5OUgxOS45MTc2TDE4Ljc5MjYgMTIuNzYwNUgxNi44NzVaTTI4LjYwOTcgMTIu
+    ODg4M0MyNy45MzY0IDEyLjg4ODMgMjcuMzU2OSAxMi43NTE5IDI2Ljg3MTEgMTIu
+    NDc5MkMyNi4zODgxIDEyLjIwMzYgMjYuMDE2IDExLjgxNDQgMjUuNzU0NiAxMS4z
+    MTE2QzI1LjQ5MzMgMTAuODA1OSAyNS4zNjI2IDEwLjIwNzkgMjUuMzYyNiA5LjUx
+    NzU3QzI1LjM2MjYgOC44NDQyNyAyNS40OTMzIDguMjUzMzcgMjUuNzU0NiA3Ljc0
+    NDg0QzI2LjAxNiA3LjIzNjMyIDI2LjM4MzkgNi44NDAwMSAyNi44NTgzIDYuNTU1
+    OTJDMjcuMzM1NiA2LjI3MTgzIDI3Ljg5NTIgNi4xMjk3OSAyOC41MzczIDYuMTI5
+    NzlDMjguOTY5MSA2LjEyOTc5IDI5LjM3MTEgNi4xOTkzOSAyOS43NDMzIDYuMzM4
+    NTlDMzAuMTE4MyA2LjQ3NDk2IDMwLjQ0NSA2LjY4MDkyIDMwLjcyMzQgNi45NTY0
+    OUMzMS4wMDQ2IDcuMjMyMDYgMzEuMjIzNCA3LjU3ODY1IDMxLjM3OTYgNy45OTYy
+    NkMzMS41MzU5IDguNDExMDQgMzEuNjE0IDguODk2ODMgMzEuNjE0IDkuNDUzNjVW
+    OS45NTIyM0gyNi4wODdWOC44MjcyM0gyOS45MDUyQzI5LjkwNTIgOC41NjU4NyAy
+    OS44NDg0IDguMzM0MzMgMjkuNzM0NyA4LjEzMjYzQzI5LjYyMTEgNy45MzA5MiAy
+    OS40NjM0IDcuNzczMjUgMjkuMjYxNyA3LjY1OTYyQzI5LjA2MjkgNy41NDMxNCAy
+    OC44MzEzIDcuNDg0OSAyOC41NjcxIDcuNDg0OUMyOC4yOTE1IDcuNDg0OSAyOC4w
+    NDcyIDcuNTQ4ODIgMjcuODM0MiA3LjY3NjY2QzI3LjYyMzkgNy44MDE2NiAyNy40
+    NTkyIDcuOTcwNjkgMjcuMzM5OCA4LjE4Mzc2QzI3LjIyMDUgOC4zOTM5OSAyNy4x
+    NTk0IDguNjI4MzcgMjcuMTU2NiA4Ljg4Njg5VjkuOTU2NDlDMjcuMTU2NiAxMC4y
+    ODA0IDI3LjIxNjMgMTAuNTYwMiAyNy4zMzU2IDEwLjc5NkMyNy40NTc3IDExLjAz
+    MTggMjcuNjI5NiAxMS4yMTM2IDI3Ljg1MTIgMTEuMzQxNEMyOC4wNzI4IDExLjQ2
+    OTMgMjguMzM1NiAxMS41MzMyIDI4LjYzOTYgMTEuNTMzMkMyOC44NDEzIDExLjUz
+    MzIgMjkuMDI1OSAxMS41MDQ4IDI5LjE5MzUgMTEuNDQ4QzI5LjM2MTIgMTEuMzkx
+    MSAyOS41MDQ2IDExLjMwNTkgMjkuNjIzOSAxMS4xOTIzQzI5Ljc0MzMgMTEuMDc4
+    NiAyOS44MzQyIDEwLjkzOTQgMjkuODk2NyAxMC43NzQ3TDMxLjU3NTYgMTAuODg1
+    NUMzMS40OTA0IDExLjI4ODkgMzEuMzE1NyAxMS42NDExIDMxLjA1MTUgMTEuOTQy
+    M0MzMC43OTAxIDEyLjI0MDYgMzAuNDUyMSAxMi40NzM1IDMwLjAzNzMgMTIuNjQx
+    MUMyOS42MjU0IDEyLjgwNTkgMjkuMTQ5NSAxMi44ODgzIDI4LjYwOTcgMTIuODg4
+    M1pNMzIuNzk4NyAxMi43NjA1VjYuMjE1MDFIMzQuNTU4NlY3LjM1NzA2SDM0LjYy
+    NjhDMzQuNzQ2MSA2Ljk1MDgxIDM0Ljk0NjQgNi42NDM5OSAzNS4yMjc2IDYuNDM2
+    NkMzNS41MDg5IDYuMjI2MzggMzUuODMyNyA2LjEyMTI2IDM2LjE5OTIgNi4xMjEy
+    NkMzNi4yOTAxIDYuMTIxMjYgMzYuMzg4MSA2LjEyNjk0IDM2LjQ5MzMgNi4xMzgz
+    MUMzNi41OTg0IDYuMTQ5NjcgMzYuNjkwNyA2LjE2NTMgMzYuNzcwMiA2LjE4NTE4
+    VjcuNzk1OThDMzYuNjg1IDcuNzcwNDEgMzYuNTY3MSA3Ljc0NzY4IDM2LjQxNjUg
+    Ny43Mjc4QzM2LjI2NiA3LjcwNzkxIDM2LjEyODIgNy42OTc5NyAzNi4wMDMyIDcu
+    Njk3OTdDMzUuNzM2MiA3LjY5Nzk3IDM1LjQ5NzUgNy43NTYyMSAzNS4yODczIDcu
+    ODcyNjhDMzUuMDc5OSA3Ljk4NjMyIDM0LjkxNTEgOC4xNDU0MSAzNC43OTMgOC4z
+    NDk5NkMzNC42NzM3IDguNTU0NSAzNC42MTQgOC43OTAzIDM0LjYxNCA5LjA1NzM0
+    VjEyLjc2MDVIMzIuNzk4N1pNNDAuMzg3MSAxMi44ODgzQzM5LjcxMzggMTIuODg4
+    MyAzOS4xMzQyIDEyLjc1MTkgMzguNjQ4NCAxMi40NzkyQzM4LjE2NTUgMTIuMjAz
+    NiAzNy43OTMzIDExLjgxNDQgMzcuNTMyIDExLjMxMTZDMzcuMjcwNiAxMC44MDU5
+    IDM3LjEzOTkgMTAuMjA3OSAzNy4xMzk5IDkuNTE3NTdDMzcuMTM5OSA4Ljg0NDI3
+    IDM3LjI3MDYgOC4yNTMzNyAzNy41MzIgNy43NDQ4NEMzNy43OTMzIDcuMjM2MzIg
+    MzguMTYxMiA2Ljg0MDAxIDM4LjYzNTcgNi41NTU5MkMzOS4xMTI5IDYuMjcxODMg
+    MzkuNjcyNiA2LjEyOTc5IDQwLjMxNDYgNi4xMjk3OUM0MC43NDY0IDYuMTI5Nzkg
+    NDEuMTQ4NCA2LjE5OTM5IDQxLjUyMDYgNi4zMzg1OUM0MS44OTU2IDYuNDc0OTYg
+    NDIuMjIyMyA2LjY4MDkyIDQyLjUwMDcgNi45NTY0OUM0Mi43ODIgNy4yMzIwNiA0
+    My4wMDA3IDcuNTc4NjUgNDMuMTU3IDcuOTk2MjZDNDMuMzEzMiA4LjQxMTA0IDQz
+    LjM5MTMgOC44OTY4MyA0My4zOTEzIDkuNDUzNjVWOS45NTIyM0gzNy44NjQzVjgu
+    ODI3MjNINDEuNjgyNUM0MS42ODI1IDguNTY1ODcgNDEuNjI1NyA4LjMzNDMzIDQx
+    LjUxMjEgOC4xMzI2M0M0MS4zOTg0IDcuOTMwOTIgNDEuMjQwOCA3Ljc3MzI1IDQx
+    LjAzOTEgNy42NTk2MkM0MC44NDAyIDcuNTQzMTQgNDAuNjA4NyA3LjQ4NDkgNDAu
+    MzQ0NSA3LjQ4NDlDNDAuMDY4OSA3LjQ4NDkgMzkuODI0NiA3LjU0ODgyIDM5LjYx
+    MTUgNy42NzY2NkMzOS40MDEzIDcuODAxNjYgMzkuMjM2NSA3Ljk3MDY5IDM5LjEx
+    NzIgOC4xODM3NkMzOC45OTc5IDguMzkzOTkgMzguOTM2OCA4LjYyODM3IDM4Ljkz
+    MzkgOC44ODY4OVY5Ljk1NjQ5QzM4LjkzMzkgMTAuMjgwNCAzOC45OTM2IDEwLjU2
+    MDIgMzkuMTEyOSAxMC43OTZDMzkuMjM1MSAxMS4wMzE4IDM5LjQwNyAxMS4yMTM2
+    IDM5LjYyODYgMTEuMzQxNEMzOS44NTAxIDExLjQ2OTMgNDAuMTEyOSAxMS41MzMy
+    IDQwLjQxNjkgMTEuNTMzMkM0MC42MTg2IDExLjUzMzIgNDAuODAzMyAxMS41MDQ4
+    IDQwLjk3MDkgMTEuNDQ4QzQxLjEzODUgMTEuMzkxMSA0MS4yODIgMTEuMzA1OSA0
+    MS40MDEzIDExLjE5MjNDNDEuNTIwNiAxMS4wNzg2IDQxLjYxMTUgMTAuOTM5NCA0
+    MS42NzQgMTAuNzc0N0w0My4zNTMgMTAuODg1NUM0My4yNjc4IDExLjI4ODkgNDMu
+    MDkzIDExLjY0MTEgNDIuODI4OCAxMS45NDIzQzQyLjU2NzUgMTIuMjQwNiA0Mi4y
+    Mjk0IDEyLjQ3MzUgNDEuODE0NiAxMi42NDExQzQxLjQwMjcgMTIuODA1OSA0MC45
+    MjY4IDEyLjg4ODMgNDAuMzg3MSAxMi44ODgzWk00Ni45ODc5IDEyLjg2N0M0Ni40
+    OTA4IDEyLjg2NyA0Ni4wNDA1IDEyLjczOTIgNDUuNjM3MSAxMi40ODM1QzQ1LjIz
+    NjUgMTIuMjI1IDQ0LjkxODMgMTEuODQ1NyA0NC42ODI1IDExLjM0NTdDNDQuNDQ5
+    NiAxMC44NDI5IDQ0LjMzMzEgMTAuMjI2NCA0NC4zMzMxIDkuNDk2MjZDNDQuMzMz
+    MSA4Ljc0NjI2IDQ0LjQ1MzggOC4xMjI2OCA0NC42OTUzIDcuNjI1NTJDNDQuOTM2
+    OCA3LjEyNTUyIDQ1LjI1NzggNi43NTE5NCA0NS42NTg0IDYuNTA0NzlDNDYuMDYx
+    OCA2LjI1NDc5IDQ2LjUwMzYgNi4xMjk3OSA0Ni45ODM3IDYuMTI5NzlDNDcuMzUw
+    MSA2LjEyOTc5IDQ3LjY1NTUgNi4xOTIyOSA0Ny44OTk5IDYuMzE3MjlDNDguMTQ3
+    IDYuNDM5NDQgNDguMzQ1OSA2LjU5Mjg1IDQ4LjQ5NjQgNi43Nzc1MUM0OC42NDk5
+    IDYuOTU5MzMgNDguNzY2MyA3LjEzODMxIDQ4Ljg0NTkgNy4zMTQ0NEg0OC45MDEz
+    VjQuMDMzMTlINTAuNzEyNFYxMi43NjA1SDQ4LjkyMjZWMTEuNzEyMkg0OC44NDU5
+    QzQ4Ljc2MDcgMTEuODk0IDQ4LjYzOTkgMTIuMDc0NCA0OC40ODM3IDEyLjI1MzRD
+    NDguMzMwMyAxMi40Mjk1IDQ4LjEzIDEyLjU3NTggNDcuODgyOCAxMi42OTIzQzQ3
+    LjYzODUgMTIuODA4OCA0Ny4zNDAyIDEyLjg2NyA0Ni45ODc5IDEyLjg2N1pNNDcu
+    NTYzMiAxMS40MjI0QzQ3Ljg1NTggMTEuNDIyNCA0OC4xMDMgMTEuMzQyOSA0OC4z
+    MDQ3IDExLjE4MzhDNDguNTA5MiAxMS4wMjE4IDQ4LjY2NTUgMTAuNzk2IDQ4Ljc3
+    MzQgMTAuNTA2MkM0OC44ODQyIDEwLjIxNjQgNDguOTM5NiA5Ljg3Njk0IDQ4Ljkz
+    OTYgOS40ODc3NEM0OC45Mzk2IDkuMDk4NTQgNDguODg1NyA4Ljc2MDQ3IDQ4Ljc3
+    NzcgOC40NzM1NEM0OC42Njk3IDguMTg2NiA0OC41MTM1IDcuOTY1MDEgNDguMzA4
+    OSA3LjgwODc2QzQ4LjEwNDQgNy42NTI1MSA0Ny44NTU4IDcuNTc0MzkgNDcuNTYz
+    MiA3LjU3NDM5QzQ3LjI2NDkgNy41NzQzOSA0Ny4wMTM1IDcuNjU1MzUgNDYuODA4
+    OSA3LjgxNzI5QzQ2LjYwNDQgNy45NzkyMiA0Ni40NDk2IDguMjAzNjUgNDYuMzQ0
+    NSA4LjQ5MDU4QzQ2LjIzOTMgOC43Nzc1MSA0Ni4xODY4IDkuMTA5OSA0Ni4xODY4
+    IDkuNDg3NzRDNDYuMTg2OCA5Ljg2ODQyIDQ2LjIzOTMgMTAuMjA1MSA0Ni4zNDQ1
+    IDEwLjQ5NzdDNDYuNDUyNCAxMC43ODc1IDQ2LjYwNzIgMTEuMDE0NyA0Ni44MDg5
+    IDExLjE3OTVDNDcuMDEzNSAxMS4zNDE0IDQ3LjI2NDkgMTEuNDIyNCA0Ny41NjMy
+    IDExLjQyMjRaTTU1LjAxNjMgMTIuNzYwNVY0LjAzMzE5SDU2LjgzMTdWNy4zMTQ0
+    NEg1Ni44ODcxQzU2Ljk2NjYgNy4xMzgzMSA1Ny4wODE3IDYuOTU5MzMgNTcuMjMy
+    MiA2Ljc3NzUxQzU3LjM4NTcgNi41OTI4NSA1Ny41ODQ1IDYuNDM5NDQgNTcuODI4
+    OCA2LjMxNzI5QzU4LjA3NiA2LjE5MjI5IDU4LjM4MjggNi4xMjk3OSA1OC43NDkz
+    IDYuMTI5NzlDNTkuMjI2NiA2LjEyOTc5IDU5LjY2NjkgNi4yNTQ3OSA2MC4wNzAz
+    IDYuNTA0NzlDNjAuNDczNyA2Ljc1MTk0IDYwLjc5NjIgNy4xMjU1MiA2MS4wMzc2
+    IDcuNjI1NTJDNjEuMjc5MSA4LjEyMjY4IDYxLjM5OTkgOC43NDYyNiA2MS4zOTk5
+    IDkuNDk2MjZDNjEuMzk5OSAxMC4yMjY0IDYxLjI4MiAxMC44NDI5IDYxLjA0NjIg
+    MTEuMzQ1N0M2MC44MTMyIDExLjg0NTcgNjAuNDk1IDEyLjIyNSA2MC4wOTE2IDEy
+    LjQ4MzVDNTkuNjkxMSAxMi43MzkyIDU5LjI0MjIgMTIuODY3IDU4Ljc0NSAxMi44
+    NjdDNTguMzkyOCAxMi44NjcgNTguMDkzIDEyLjgwODggNTcuODQ1OSAxMi42OTIz
+    QzU3LjYwMTYgMTIuNTc1OCA1Ny40MDEzIDEyLjQyOTUgNTcuMjQ1IDEyLjI1MzRD
+    NTcuMDg4OCAxMi4wNzQ0IDU2Ljk2OTUgMTEuODk0IDU2Ljg4NzEgMTEuNzEyMkg1
+    Ni44MDYxVjEyLjc2MDVINTUuMDE2M1pNNTYuNzkzMyA5LjQ4Nzc0QzU2Ljc5MzMg
+    OS44NzY5NCA1Ni44NDczIDEwLjIxNjQgNTYuOTU1MyAxMC41MDYyQzU3LjA2MzIg
+    MTAuNzk2IDU3LjIxOTUgMTEuMDIxOCA1Ny40MjQgMTEuMTgzOEM1Ny42Mjg2IDEx
+    LjM0MjkgNTcuODc3MSAxMS40MjI0IDU4LjE2OTcgMTEuNDIyNEM1OC40NjUyIDEx
+    LjQyMjQgNTguNzE1MiAxMS4zNDE0IDU4LjkxOTcgMTEuMTc5NUM1OS4xMjQzIDEx
+    LjAxNDcgNTkuMjc5MSAxMC43ODc1IDU5LjM4NDIgMTAuNDk3N0M1OS40OTIyIDEw
+    LjIwNTEgNTkuNTQ2MiA5Ljg2ODQyIDU5LjU0NjIgOS40ODc3NEM1OS41NDYyIDku
+    MTA5OSA1OS40OTM2IDguNzc3NTEgNTkuMzg4NSA4LjQ5MDU4QzU5LjI4MzQgOC4y
+    MDM2NSA1OS4xMjg2IDcuOTc5MjIgNTguOTI0IDcuODE3MjlDNTguNzE5NSA3LjY1
+    NTM1IDU4LjQ2OCA3LjU3NDM5IDU4LjE2OTcgNy41NzQzOUM1Ny44NzQzIDcuNTc0
+    MzkgNTcuNjI0MyA3LjY1MjUxIDU3LjQxOTcgNy44MDg3NkM1Ny4yMTggNy45NjUw
+    MSA1Ny4wNjMyIDguMTg2NiA1Ni45NTUzIDguNDczNTRDNTYuODQ3MyA4Ljc2MDQ3
+    IDU2Ljc5MzMgOS4wOTg1NCA1Ni43OTMzIDkuNDg3NzRaTTYzLjUyMSAxNS4yMTVD
+    NjMuMjkwOCAxNS4yMTUgNjMuMDc0OSAxNS4xOTY1IDYyLjg3MzIgMTUuMTU5NkM2
+    Mi42NzQ0IDE1LjEyNTUgNjIuNTA5NiAxNS4wODE1IDYyLjM3ODkgMTUuMDI3NUw2
+    Mi43ODggMTMuNjcyNEM2My4wMDExIDEzLjczNzcgNjMuMTkyOCAxMy43NzMzIDYz
+    LjM2MzMgMTMuNzc4OUM2My41MzY2IDEzLjc4NDYgNjMuNjg1NyAxMy43NDQ4IDYz
+    LjgxMDcgMTMuNjU5NkM2My45Mzg2IDEzLjU3NDQgNjQuMDQyMyAxMy40Mjk1IDY0
+    LjEyMTggMTMuMjI1TDY0LjIyODMgMTIuOTQ4TDYxLjg4MDMgNi4yMTUwMUg2My43
+    ODk0TDY1LjE0NDUgMTEuMDIxOEg2NS4yMTI3TDY2LjU4MDYgNi4yMTUwMUg2OC41
+    MDI1TDY1Ljk1ODUgMTMuNDY3OUM2NS44MzYzIDEzLjgyMDEgNjUuNjcwMSAxNC4x
+    MjY5IDY1LjQ1OTkgMTQuMzg4M0M2NS4yNTI1IDE0LjY1MjUgNjQuOTg5NyAxNC44
+    NTU2IDY0LjY3MTUgMTQuOTk3N0M2NC4zNTMzIDE1LjE0MjYgNjMuOTY5OCAxNS4y
+    MTUgNjMuNTIxIDE1LjIxNVoiIGZpbGw9IndoaXRlIi8+CjxnIGNsaXAtcGF0aD0i
+    dXJsKCNjbGlwMF83XzE2KSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xp
+    cC1ydWxlPSJldmVub2RkIiBkPSJNOTAuMDU1NSAxMy45NzU3VjQuODM2NDRDOTAu
+    MDU1NSAzLjU3NDY5IDg5LjAzMjUgMi41NTE3MSA4Ny43NzA4IDIuNTUxNzFDODYu
+    NTA4OCAyLjU1MTcxIDg1LjQ4NTggMy41NzQ2OSA4NS40ODU5IDQuODM2NDRMODUu
+    NDg1OCAxMy45NzU4Qzg1LjQ4NTggMTUuMjM3NiA4Ni41MDg4IDE2LjI2MDYgODcu
+    NzcwNyAxNi4yNjA1Qzg5LjAzMjYgMTYuMjYwNSA5MC4wNTU1IDE1LjIzNzYgOTAu
+    MDU1NSAxMy45NzU3WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJl
+    dmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDkuNzQ3IDIuNTUxOEwx
+    MDMuMjg0IDIuNTUxNzFDMTAyLjAyMiAyLjU1MTcxIDEwMC45OTkgMy41NzQ2OSAx
+    MDAuOTk5IDQuODM2NDRDMTAwLjk5OSA2LjA5ODM3IDEwMi4wMjIgNy4xMjEzNSAx
+    MDMuMjg0IDcuMTIxMzVIMTA0LjIzMVYxMy45NzU2QzEwNC4yMzEgMTUuMjM3NiAx
+    MDUuMjU0IDE2LjI2MDUgMTA2LjUxNiAxNi4yNjA1QzEwNy43NzcgMTYuMjYwNSAx
+    MDguODAxIDE1LjIzNzYgMTA4LjgwMSAxMy45NzU2VjcuMTIxMjZIMTA5Ljc0N0Mx
+    MTEuMDA5IDcuMTIxMzUgMTEyLjAzMiA2LjA5ODM3IDExMi4wMzIgNC44MzY1M0Mx
+    MTIuMDMyIDMuNTc0NzggMTExLjAwOSAyLjU1MTggMTA5Ljc0NyAyLjU1MThaIiBm
+    aWxsPSJ3aGl0ZSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVs
+    ZT0iZXZlbm9kZCIgZD0iTTgyLjI5ODUgMTYuMjYwNUM4My41NjA0IDE2LjI2MDUg
+    ODQuNTgzMyAxNS4yMzc1IDg0LjU4MzMgMTMuOTc1NUM4NC41ODMzIDEyLjcxMzgg
+    ODMuNTYwMyAxMS42OTA4IDgyLjI5ODUgMTEuNjkwOEg3OS44NTQ0Qzc4LjU5MjUg
+    MTEuNjkwOCA3Ny41Njk2IDEwLjY2NzkgNzcuNTY5NiA5LjQwNjA4Qzc3LjU2OTYg
+    OC4xNDQxNSA3OC41OTI1IDcuMTIxMTcgNzkuODU0NSA3LjEyMTE3SDgyLjI5ODVD
+    ODMuNTYwMyA3LjEyMTE3IDg0LjU4MzMgNi4wOTgxOSA4NC41ODMzIDQuODM2MjVD
+    ODQuNTgzMyAzLjU3NDUxIDgzLjU2MDMgMi41NTE1MiA4Mi4yOTg1IDIuNTUxNTJI
+    NzkuODU0NEM3Ni4wNjg4IDIuNTUxNzEgNzMgNS42MjA1NyA3MyA5LjQwNjE4Qzcz
+    IDEzLjE5MTcgNzYuMDY4OCAxNi4yNjA1IDc5Ljg1NDQgMTYuMjYwNUg4Mi4yOTg1
+    WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlw
+    LXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05MS43OTMxIDkuMDU4MzZDOTEuMjY3MyA5Ljgw
+    MjY1IDkwLjk1NzQgMTAuNzEwMyA5MC45NTc0IDExLjY5MDlDOTAuOTU3NCAxNC4y
+    MTQ2IDkzLjAwMzUgMTYuMjYwNSA5NS41MjY5IDE2LjI2MDVDOTYuNTA3NiAxNi4y
+    NjA1IDk3LjQxNTIgMTUuOTUwNiA5OC4xNTk2IDE1LjQyNDhMOTEuNzkzMSA5LjA1
+    ODM2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBj
+    bGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDIuNjU5IDEyLjM2MDJMOTQuMTczOCAz
+    Ljg5NjQ1QzkzLjQzNzggMy4xNjA1MSA5My40NDcyIDEuOTU4MDYgOTQuMTk0NSAx
+    LjIxMDc1Qzk0LjI4ODIgMS4xMTcwMiA5NC4zODk4IDEuMDM2MjQgOTQuNDk2IDAu
+    OTY1NzQxQzk0LjAwODEgMS43MDU5OSA5NC4wODIzIDIuNzAzNDUgOTQuNzI0NiAz
+    LjM0NTY2TDk5LjI1NjkgNy44NjY2NkM5OS43ODUxIDcuMTIxMjcgMTAwLjA5NyA2
+    LjIxMTQ3IDEwMC4wOTcgNS4yMjgzM0MxMDAuMDk3IDIuNzA0NzQgOTguMDUwOCAw
+    LjY1ODg2NCA5NS41MjY5IDAuNjU4ODY0QzkzLjAwMzQgMC42NTg4NjQgOTAuOTU3
+    NSAyLjcwNDc0IDkwLjk1NzUgNS4yMjgzM0M5MC45NTc1IDYuNDkwMzUgOTEuNDY5
+    IDcuNjMyNjcgOTIuMjk1OSA4LjQ1OTY3TDk4Ljc1ODMgMTQuOTIyMUw5OS40Mjc0
+    IDE1LjU5MTJDMTAwLjMyIDE2LjQ4MzYgMTAxLjc2NiAxNi40ODM2IDEwMi42NTkg
+    MTUuNTkxMkMxMDMuNTUxIDE0LjY5OSAxMDMuNTUxIDEzLjI1MjMgMTAyLjY1OSAx
+    Mi4zNjAyWiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlk
+    PSJjbGlwMF83XzE2Ij4KPHJlY3Qgd2lkdGg9IjM5LjAzMTciIGhlaWdodD0iMTYi
+    IGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MyAwLjI2MDQ2OCki
+    Lz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K" alt="Logo Ligero FigTools" width="102.87" height="37.53">
+</section>
+<!-- /START-VARIABLE -->
 
-<button class="hide" id="applyVariable">Trocar variavel</button>
+<!-- APPLY-VARIABLE -->
+<section class="hide" id="applyVariable">
+  <button>Trocar variavel</button>
+</section>
+<!-- /APPLY-VARIABLE -->
+
+<style>
+  :root {
+    --spacing: 0.8rem;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  main {
+    height: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+  }
+
+  body {
+    background-color: var(--figma-color-bg);
+    color: var(--figma-color-text);
+    margin: 0;
+    padding: var(--spacing);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  p {
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    appearance: none;
+    border-radius: 4px;
+    padding: var(--spacing);
+    background-color: var(--figma-color-bg-component);
+    border: none;
+    color: var(--figma-color-text-onbrand);
+    font-weight: bold;
+  }
+
+  /************** LOADING **************/
+  .loading {
+    flex-direction: column;
+  }
+
+  .loading .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--figma-color-bg-component);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 20% auto;
+  }
+  
+  .loading p.textLoader {
+    text-align: center;
+    padding: 0 25px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  /************** LOADING **************/
+
+  /************** START-VARIABLE **************/
+  #startVariable {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  #startVariable textarea, 
+  #startVariable input {
+    display: none;
+  }
+  /************** START-VARIABLE **************/
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: flex;
+  }
+</style>
 
 <script>
   document.querySelector("form").addEventListener("submit", (e) => {
