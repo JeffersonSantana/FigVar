@@ -162,7 +162,7 @@ figma.ui.onmessage = (e) => {
 };
 
 figma.showUI(__html__, {
-  width: 250,
+  width: 260,
   height: 350,
   themeColors: true,
 });
