@@ -180,15 +180,12 @@ const localCollections = figma.variables.getLocalVariableCollections();
 if(localCollections.length > 0) {
   localCollections.forEach(element => {
     if(element.name === "Ligero") {
-      console.log("Tem o Ligero");
       figma.ui.postMessage({ type: 'HASLIGERO', value: true });
     } else {
-      console.log("Não tem o Ligero");
       figma.ui.postMessage({ type: 'HASLIGERO', value: false });
     }
   });
 } else {
-  console.log("Não tem o Ligero");
   figma.ui.postMessage({ type: 'HASLIGERO', value: false });
 }
 

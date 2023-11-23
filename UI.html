@@ -881,16 +881,27 @@
   /************** LOADING **************/
   .loading {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 24px;
+    position: absolute;
+    z-index: 9999;
+    background-color: var(--figma-color-bg);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .loading .loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid var(--figma-color-bg-component);
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid var(--figma-color-bg-component);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 2s linear infinite;
-    margin: 20% auto;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
   }
   
   .loading p.textLoader {
@@ -932,17 +943,6 @@
 </style>
 
 <script>
-  document.querySelector("form").addEventListener("submit", (e) => {
-    const fileName = document.querySelector("input").value.trim();
-    const body = document.querySelector("textarea").value.trim();
-    e.preventDefault();
-    if (isValidJSON(body) && fileName) {
-      parent.postMessage({ pluginMessage: { fileName, body, type: "IMPORT" }}, "*");
-    } else {
-      alert("Invalid filename or JSON");
-    }
-  });
-
   function isValidJSON(body) {
     try {
       JSON.parse(body);
@@ -952,38 +952,80 @@
     }
   }
 
-  // 
+  function visibilityLoading(show, text) {
+    const loading = document.querySelector('.loading');
+
+    if(text) {
+      const textLoader = document.querySelector('.textLoader');
+      textLoader.textContent = text;
+    }
+
+    if(show) {
+      loading.classList.remove('hide');
+      loading.classList.add('show');
+    } else {
+      loading.classList.remove('show');
+      loading.classList.add('hide');
+    }
+  }
+
+  function visibilityApplyVariable(show) {
+    const applyVariable = document.getElementById('applyVariable');
+    if(show) {
+      applyVariable.classList.remove('hide');
+      applyVariable.classList.add('show');
+    } else {
+      applyVariable.classList.remove('show');
+      applyVariable.classList.add('hide');
+    }
+  }
+
+  function visibilityStartVariable(show) {
+    const startVariable = document.getElementById('startVariable');
+    if(show) {
+      startVariable.classList.remove('hide');
+      startVariable.classList.add('show');
+    } else {
+      startVariable.classList.remove('show');
+      startVariable.classList.add('hide');
+    }
+  }
+
+  document.querySelector("form").addEventListener("submit", (e) => {
+    visibilityLoading(true, "Inserindo a Collection Ligero...");
+    
+    const fileName = document.querySelector("input").value.trim();
+    const body = document.querySelector("textarea").value.trim();
+    e.preventDefault();
+    if (isValidJSON(body) && fileName) {
+      setTimeout(function(){
+        parent.postMessage({ pluginMessage: { fileName, body, type: "IMPORT" }}, "*");
+        visibilityLoading(false);
+        visibilityApplyVariable(true);
+        visibilityStartVariable(false);
+      }, 2500);
+    } else {
+      alert("Invalid filename or JSON");
+    }
+  });
+
   window.onmessage = event => {
     const message = event.data.pluginMessage;
-    console.log(message)
     setTimeout(function() {
-
-      const loader = document.querySelector('.loader');
-      const textLoader = document.querySelector('.textLoader');
-      loader.classList.remove('show');
-      textLoader.classList.remove('show');
-      loader.classList.add('hide');
-      textLoader.classList.add('hide');
-
+      visibilityLoading(false);
       if (message.type === 'HASLIGERO' && message.value === true) {
-
-        const applyVariable = document.getElementById('applyVariable');
-        applyVariable.classList.remove('hide');
-        applyVariable.classList.add('show');
-
+        visibilityApplyVariable(true);
       } else {
-
-        const startVariable = document.getElementById('startVariable');
-        startVariable.classList.remove('hide');
-        startVariable.classList.add('show');
-
+        visibilityStartVariable(true);
       }
     }, 2500);
   };
 
-
   document.getElementById("applyVariable").addEventListener("click", (e) => {
     parent.postMessage({ pluginMessage: { type: "APPLYVARIABLE" } }, "*");
   });
+
+  visibilityApplyVariable(false);
+  visibilityStartVariable(false);
 
 </script>
