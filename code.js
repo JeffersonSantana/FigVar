@@ -279,3 +279,36 @@ function hslToRgbFloat(h, s, l) {
 
   return { r, g, b };
 }
+
+// *********** PaintStyle *********** //
+const paintStylesArray = [
+  {
+    "name": "Primary",
+    "type": "SOLID",
+    "color": "#FF0000"
+  },
+  {
+    "name": "Secondary",
+    "type": "SOLID",
+    "color": "#00FF00"
+  },
+  {
+    "name": "Tertiary",
+    "type": "SOLID",
+    "color": "#0000FF"
+  }
+];
+
+function createPaintStyle(name, type, color) {
+  const paintStyle = figma.createPaintStyle();
+  paintStyle.name = 'Ligero/' + name;
+  paintStyle.paints = [{
+    type: type,
+    color: parseColor(color)
+  }];
+}
+
+paintStylesArray.forEach(style => {
+  createPaintStyle(style.name, style.type, style.color);
+});
+// *********** PaintStyle *********** //
