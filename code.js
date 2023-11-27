@@ -189,6 +189,13 @@ if(localCollections.length > 0) {
   figma.ui.postMessage({ type: 'HASLIGERO', value: false });
 }
 
+
+
+
+
+
+
+// *********** Utility *********** //
 function rgbToHex({ r, g, b, a }) {
   if (a !== 1) {
     return `rgba(${[r, g, b]
@@ -279,6 +286,13 @@ function hslToRgbFloat(h, s, l) {
 
   return { r, g, b };
 }
+// *********** Utility *********** //
+
+
+
+
+
+
 
 // *********** PaintStyle *********** //
 const paintStylesArray = [
@@ -312,3 +326,40 @@ paintStylesArray.forEach(style => {
   createPaintStyle(style.name, style.type, style.color);
 });
 // *********** PaintStyle *********** //
+
+
+
+
+
+
+
+// *********** TextStyle *********** //
+async function carregarFonte() {
+  await figma.loadFontAsync({ family: "Arial", style: "Regular" });
+}
+
+const textStylesArray = [
+  {
+    "name": "Ligero/Body (Default)",
+    "fontSize": 14,
+    "fontName": {
+      "family": "Arial",
+      "style": "Regular"
+    }
+  }
+];
+
+async function createTextStyle(style) {
+
+  await carregarFonte()
+
+  const textStyle = figma.createTextStyle();
+  textStyle.name = style.name;
+  textStyle.fontName = style.fontName;  
+  textStyle.fontSize = style.fontSize;
+}
+
+textStylesArray.forEach(style => {
+  createTextStyle(style);
+});
+// *********** TextStyle *********** //
