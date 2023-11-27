@@ -164,8 +164,10 @@ figma.ui.onmessage = (e) => {
     const node = figma.currentPage.selection[0];
 
     if (node && node.mainComponent) {
+
       const collectionAId = "ID da Collection A";
-      const collectionBId = "ID da Collection B";
+      const collectionBId = figma.variables.getLocalVariableCollections().find(Collection => Collection.name === "Ligero");
+      console.log(collectionBId)
     }
   }
 };
@@ -297,33 +299,1533 @@ function hslToRgbFloat(h, s, l) {
 // *********** PaintStyle *********** //
 const paintStylesArray = [
   {
-    "name": "Primary",
-    "type": "SOLID",
-    "color": "#FF0000"
+      "name": "Brand-Colors/brand-primary",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8705882430076599,
+                  "g": 0.20392157137393951,
+                  "b": 0.2862745225429535
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:6"
+                  }
+              }
+          }
+      ]
   },
   {
-    "name": "Secondary",
-    "type": "SOLID",
-    "color": "#00FF00"
+      "name": "Brand-Colors/brand-primary-dark",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5686274766921997,
+                  "g": 0,
+                  "b": 0.07058823853731155
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:7"
+                  }
+              }
+          }
+      ]
   },
   {
-    "name": "Tertiary",
-    "type": "SOLID",
-    "color": "#0000FF"
+      "name": "Brand-Colors/brand-primary-light",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.9800000190734863,
+                  "g": 0.2842000126838684,
+                  "b": 0.2842000126838684
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:8"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Brand-Colors/brand-secondary",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.3333333432674408,
+                  "g": 0.729411780834198,
+                  "b": 0.7372549176216125
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:10"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Brand-Colors/brand-secondary-dark",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0.4902913570404053,
+                  "b": 0.5
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:11"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Brand-Colors/brand-secondary-light",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.41999998688697815,
+                  "g": 0.831844687461853,
+                  "b": 0.8399999737739563
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:12"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Feedback/success-color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.09803921729326248,
+                  "g": 0.501960813999176,
+                  "b": 0.2705882489681244
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:13"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Feedback/error-color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8460404872894287,
+                  "g": 0.09614098817110062,
+                  "b": 0.08460408449172974
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:14"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Feedback/warning-color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.9686274528503418,
+                  "g": 0.7303529381752014,
+                  "b": 0.11764705181121826
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:15"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-low-medium",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.4000000059604645,
+                  "g": 0.4000000059604645,
+                  "b": 0.4000000059604645
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:24"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-low-light",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5960784554481506,
+                  "g": 0.5960784554481506,
+                  "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:18"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-high-dark",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.7803921699523926,
+                  "g": 0.7803921699523926,
+                  "b": 0.7803921699523926
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:25"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-high-medium",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8980392217636108,
+                  "g": 0.8980392217636108,
+                  "b": 0.8980392217636108
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:23"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-high-light",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.95686274766922,
+                  "g": 0.95686274766922,
+                  "b": 0.95686274766922
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:19"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-high-pure",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:9"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-low-pure",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:16"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Neutrals/neutral-low-dark",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.20000000298023224,
+                  "g": 0.20000000298023224,
+                  "b": 0.20000000298023224
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:26"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Tranparents/Alphas/High-Pure-Intense",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:17"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Tranparents/Alphas/High-Pure-Semi-Opaque",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.7200000286102295,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:29"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Tranparents/Alphas/High-Pure-Medium",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.3199999928474426,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:30"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Tranparents/Alphas/High-Pure-Light",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.1599999964237213,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:31"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Tranparents/Alphas/High-Pure-Semi-Transparent",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.07999999821186066,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:32"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Tranparents/Alphas/Low-Medium-Intense",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.4000000059604645,
+                  "g": 0.4000000059604645,
+                  "b": 0.4000000059604645
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:41"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Backgrounds Colors/Background Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:3"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Backgrounds Colors/Background Color Primary",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8705882430076599,
+                  "g": 0.20392157137393951,
+                  "b": 0.2862745225429535
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:55"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Error Components/Area Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:4"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Error Components/Border Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8470588326454163,
+                  "g": 0.09803921729326248,
+                  "b": 0.08627451211214066
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:5"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Error Components/Help Text Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8470588326454163,
+                  "g": 0.09803921729326248,
+                  "b": 0.08627451211214066
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:27"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Success Components/Area Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:20"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Success Components/Border Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.09803921729326248,
+                  "g": 0.501960813999176,
+                  "b": 0.2705882489681244
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:28"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Disable Components/Area Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8980392217636108,
+                  "g": 0.8980392217636108,
+                  "b": 0.8980392217636108
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:21"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Disable Components/Border Color",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5960784554481506,
+                  "g": 0.5960784554481506,
+                  "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:22"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Placeholder Enable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5960784554481506,
+                  "g": 0.5960784554481506,
+                  "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:33"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Placeholder Disable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.7803921699523926,
+                  "g": 0.7803921699523926,
+                  "b": 0.7803921699523926
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:34"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Label and Text Enable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:35"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Text Disable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5960784554481506,
+                  "g": 0.5960784554481506,
+                  "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:36"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Label Disable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.4000000059604645,
+                  "g": 0.4000000059604645,
+                  "b": 0.4000000059604645
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:37"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Help Text",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.4000000059604645,
+                  "g": 0.4000000059604645,
+                  "b": 0.4000000059604645
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:38"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Hover",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0.4901960790157318,
+                  "b": 0.501960813999176
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:56"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Texts Components/Pressed",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.41960784792900085,
+                  "g": 0.8313725590705872,
+                  "b": 0.8392156958580017
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:57"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Background On",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.3333333432674408,
+                  "g": 0.729411780834198,
+                  "b": 0.7372549176216125
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:39"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Ball On",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:40"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Stroke On",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.3333333432674408,
+                  "g": 0.729411780834198,
+                  "b": 0.7372549176216125
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:42"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Error",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8470588326454163,
+                  "g": 0.09803921729326248,
+                  "b": 0.08627451211214066
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:43"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Check Inverse Error",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:44"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Check Inverse Disable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:45"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Check Inverse",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:46"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Hover",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5686274766921997,
+                  "g": 0,
+                  "b": 0.07058823853731155
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:53"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Check Toggle and Switch/Pressed",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.9803921580314636,
+                  "g": 0.2823529541492462,
+                  "b": 0.2823529541492462
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:54"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Alert/Background",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:47"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Alert/Text-Title-Error",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:48"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Alert/Text",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:49"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Alert/Text-Title-Warning",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:50"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Alert/Text-Title-Success",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:51"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Alert/Icon",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.4000000059604645,
+                  "g": 0.4000000059604645,
+                  "b": 0.4000000059604645
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:52"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Text Enable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.20000000298023224,
+                  "g": 0.20000000298023224,
+                  "b": 0.20000000298023224
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:58"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Background Enable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8980392217636108,
+                  "g": 0.8980392217636108,
+                  "b": 0.8980392217636108
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:59"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Text Disable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5960784554481506,
+                  "g": 0.5960784554481506,
+                  "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:65"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Background Disable",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.95686274766922,
+                  "g": 0.95686274766922,
+                  "b": 0.95686274766922
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:66"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Success Background",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.09803921729326248,
+                  "g": 0.501960813999176,
+                  "b": 0.2705882489681244
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:67"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Success Text",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:68"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Error Background",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8470588326454163,
+                  "g": 0.09803921729326248,
+                  "b": 0.08627451211214066
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:69"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Badge Tag and Label/Error Text",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:70"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Avatar/Enable Icon",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8980392217636108,
+                  "g": 0.8980392217636108,
+                  "b": 0.8980392217636108
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:60"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Avatar/Enable Background",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.4000000059604645,
+                  "g": 0.4000000059604645,
+                  "b": 0.4000000059604645
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:61"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Avatar/Disable Background",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.8980392217636108,
+                  "g": 0.8980392217636108,
+                  "b": 0.8980392217636108
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:62"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Avatar/Disable Icon",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.5960784554481506,
+                  "g": 0.5960784554481506,
+                  "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:63"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Avatar/Selected",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 0.95686274766922,
+                  "g": 0.95686274766922,
+                  "b": 0.95686274766922
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:64"
+                  }
+              }
+          }
+      ]
+  },
+  {
+      "name": "Components Tokens/Card/Background",
+      "paints": [
+          {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+              },
+              "boundVariables": {
+                  "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:6:71"
+                  }
+              }
+          }
+      ]
   }
 ];
 
-function createPaintStyle(name, type, color) {
+function createPaintStyle(style) {
   const paintStyle = figma.createPaintStyle();
-  paintStyle.name = 'Ligero/' + name;
-  paintStyle.paints = [{
-    type: type,
-    color: parseColor(color)
-  }];
+  paintStyle.name = style.name;
+  paintStyle.paints = style.paints;
 }
 
 paintStylesArray.forEach(style => {
-  createPaintStyle(style.name, style.type, style.color);
+  createPaintStyle(style);
 });
 // *********** PaintStyle *********** //
 
