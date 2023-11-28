@@ -1842,17 +1842,274 @@ paintStylesArray.forEach(style => {
 
 // *********** TextStyle *********** //
 async function carregarFonte() {
-  await figma.loadFontAsync({ family: "Arial", style: "Regular" });
+  await figma.loadFontAsync({ family: "Poppins", style: "Bold" });
+  await figma.loadFontAsync({ family: "Poppins", style: "Regular" });
 }
 
 const textStylesArray = [
   {
-    "name": "Ligero/Body (Default)",
-    "fontSize": 14,
+    "name": "h1",
+    "description": "Header",
     "fontName": {
-      "family": "Arial",
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 32,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 48
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "h2",
+    "description": "Header",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 24,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 32
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "h3",
+    "description": "Header",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 20,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 32
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "h4",
+    "description": "Header",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 16,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 24
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "h5",
+    "description": "Header",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 14,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 24
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "h6",
+    "description": "Header",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 12,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 16
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "primary-content",
+    "description": "primary-content",
+    "fontName": {
+      "family": "Poppins",
       "style": "Regular"
-    }
+    },
+    "fontSize": 16,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 24
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "primary-content-bold",
+    "description": "primary-content-bold",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 16,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 24
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "secundary-content",
+    "description": "secundary-content",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Regular"
+    },
+    "fontSize": 14,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 24
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "secundary-content-bold",
+    "description": "secundary-content-bold",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 14,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 24
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "tertiary-content",
+    "description": "tertiary-content",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Regular"
+    },
+    "fontSize": 12,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 26
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
+  },
+  {
+    "name": "tertiary-content-bold",
+    "description": "tertiary-content-bold",
+    "fontName": {
+      "family": "Poppins",
+      "style": "Bold"
+    },
+    "fontSize": 12,
+    "letterSpacing": {
+      "unit": "PERCENT",
+      "value": 0
+    },
+    "lineHeight": {
+      "unit": "PIXELS",
+      "value": 16
+    },
+    "listSpacing": 0,
+    "paragraphIndent": 0,
+    "paragraphSpacing": 0,
+    "textDecoration": "NONE",
+    "type": "TEXT"
   }
 ];
 
