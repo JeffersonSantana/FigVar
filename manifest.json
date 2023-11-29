@@ -1,9 +1,35 @@
 {
-  "name": "LigeroFigTools - Powered by Ci&T",
+  "name": "LigeroFigTools",
   "id": "1308228935703829791",
   "api": "1.0.0",
   "editorType": ["figma"],
-  "permissions": [],
   "main": "code.js",
-  "ui": "UI.html" 
+  "menu": [
+    {
+      "name": "Adicionar",
+      "menu": [
+        {
+          "name": "TextStyles",
+          "command": "includeTextStyles"
+        },
+        {
+          "name": "PaintStyles",
+          "command": "includePaintStyles"
+        }
+      ]
+    },
+    {
+      "name": "Remover",
+      "menu": [
+        {
+          "name": "TextStyles",
+          "command": "clearAllTextStyles"
+        },
+        {
+          "name": "PaintStyles",
+          "command": "clearAllPaintStyles"
+        }
+      ]
+    }
+  ]
 }

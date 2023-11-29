@@ -153,43 +153,43 @@ function processCollection({ name, modes, variableIds }) {
   return files;
 }
 
-figma.ui.onmessage = (e) => {
-  console.log("code received message", e);
-  if (e.type === "IMPORT") {
-    const { fileName, body } = e;
-    importJSONFile({ fileName, body });
-  }
+// figma.ui.onmessage = (e) => {
+//   console.log("code received message", e);
+//   if (e.type === "IMPORT") {
+//     const { fileName, body } = e;
+//     importJSONFile({ fileName, body });
+//   }
   
-  if (e.type === "APPLYVARIABLE") {
-    const node = figma.currentPage.selection[0];
+//   if (e.type === "APPLYVARIABLE") {
+//     const node = figma.currentPage.selection[0];
 
-    if (node && node.mainComponent) {
+//     if (node && node.mainComponent) {
 
-      const collectionAId = "ID da Collection A";
-      const collectionBId = figma.variables.getLocalVariableCollections().find(Collection => Collection.name === "Ligero");
-      console.log(collectionBId)
-    }
-  }
-};
+//       const collectionAId = "ID da Collection A";
+//       const collectionBId = figma.variables.getLocalVariableCollections().find(Collection => Collection.name === "Ligero");
+//       console.log(collectionBId)
+//     }
+//   }
+// };
 
-figma.showUI(__html__, {
-  width: 260,
-  height: 300,
-  themeColors: true,
-});
+// figma.showUI(__html__, {
+//   width: 260,
+//   height: 300,
+//   themeColors: true,
+// });
 
-const localCollections = figma.variables.getLocalVariableCollections();
-if(localCollections.length > 0) {
-  localCollections.forEach(element => {
-    if(element.name === "Ligero") {
-      figma.ui.postMessage({ type: 'HASLIGERO', value: true });
-    } else {
-      figma.ui.postMessage({ type: 'HASLIGERO', value: false });
-    }
-  });
-} else {
-  figma.ui.postMessage({ type: 'HASLIGERO', value: false });
-}
+// const localCollections = figma.variables.getLocalVariableCollections();
+// if(localCollections.length > 0) {
+//   localCollections.forEach(element => {
+//     if(element.name === "Ligero") {
+//       figma.ui.postMessage({ type: 'HASLIGERO', value: true });
+//     } else {
+//       figma.ui.postMessage({ type: 'HASLIGERO', value: false });
+//     }
+//   });
+// } else {
+//   figma.ui.postMessage({ type: 'HASLIGERO', value: false });
+// }
 
 
 
@@ -1829,9 +1829,12 @@ function createPaintStyle(style) {
   paintStyle.paints = style.paints;
 }
 
-paintStylesArray.forEach(style => {
-  createPaintStyle(style);
-});
+if (figma.command === 'includePaintStyles') {
+  paintStylesArray.forEach(style => {
+    createPaintStyle(style);
+  });
+  figma.closePlugin();
+}
 // *********** PaintStyle *********** //
 
 
@@ -1841,10 +1844,14 @@ paintStylesArray.forEach(style => {
 
 
 // *********** TextStyle *********** //
-async function carregarFonte() {
-  await figma.loadFontAsync({ family: "Poppins", style: "Bold" });
-  await figma.loadFontAsync({ family: "Poppins", style: "Regular" });
+function carregarFonte() {
+  figma.loadFontAsync({ family: "Poppins", style: "Bold" });
+  figma.loadFontAsync({ family: "Poppins", style: "Regular" });
 }
+
+figma.on("run", () => {
+  carregarFonte()
+});
 
 const textStylesArray = [
   {
@@ -2115,15 +2122,58 @@ const textStylesArray = [
 
 async function createTextStyle(style) {
 
-  await carregarFonte()
-
   const textStyle = figma.createTextStyle();
   textStyle.name = style.name;
   textStyle.fontName = style.fontName;  
   textStyle.fontSize = style.fontSize;
 }
 
-textStylesArray.forEach(style => {
-  createTextStyle(style);
-});
+if (figma.command === 'includeTextStyles') {
+  textStylesArray.forEach(style => {
+    createTextStyle(style);
+  });
+  figma.closePlugin();
+}
 // *********** TextStyle *********** //
+
+
+
+
+
+
+
+// *********** Clear TextStyles *********** //
+function clearAllTextStyles() {
+  const localTextStyles = figma.getLocalTextStyles();
+
+  localTextStyles.forEach(style => {
+      style.remove();
+  });
+} 
+
+if (figma.command === 'clearAllTextStyles') {
+  clearAllTextStyles();
+  figma.closePlugin();
+}
+// *********** Clear TextStyles *********** //
+
+
+
+
+
+
+
+// *********** Clear PaintStyles *********** //
+function clearAllPaintStyles() {
+  const localPaintStyles = figma.getLocalPaintStyles();
+
+  localPaintStyles.forEach(style => {
+    style.remove();
+  });
+}
+
+if (figma.command === 'clearAllPaintStyles') {
+  clearAllPaintStyles();
+  figma.closePlugin();
+}
+// *********** Clear PaintStyles *********** //
