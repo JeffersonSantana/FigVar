@@ -6,28 +6,15 @@
   "main": "code.js",
   "menu": [
     {
-      "name": "Adicionar",
+      "name": "TextStyles",
       "menu": [
         {
-          "name": "TextStyles",
+          "name": "Criar",
           "command": "includeTextStyles"
         },
         {
-          "name": "PaintStyles",
-          "command": "includePaintStyles"
-        }
-      ]
-    },
-    {
-      "name": "Remover",
-      "menu": [
-        {
-          "name": "TextStyles",
+          "name": "Remover",
           "command": "clearAllTextStyles"
-        },
-        {
-          "name": "PaintStyles",
-          "command": "clearAllPaintStyles"
         }
       ]
     }

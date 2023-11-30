@@ -56,3 +56,25 @@ localTextStyles.forEach(style => {
     style.remove();
 });
 // *********** Limpar TextStyles *********** //
+
+
+
+
+
+// *********** Local Variables *********** //
+const localVariables = figma.variables.getLocalVariables().map(variable => {
+    return {
+        "id": variable.id,
+        "codeSyntax": variable.codeSyntax,
+        "description": variable.description,
+        "hiddenFromPublishing": variable.hiddenFromPublishing,
+        "key": variable.key,
+        "name": variable.name,
+        "remote": variable.remote,
+        "resolvedType": variable.resolvedType,
+        "scopes": variable.scopes,
+        "valuesByMode": variable.valuesByMode,
+        "variableCollectionId": variable.variableCollectionId
+    }
+});
+// *********** Local Variables *********** //
