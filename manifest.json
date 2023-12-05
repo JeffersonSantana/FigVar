@@ -17,6 +17,15 @@
           "command": "clearAllTextStyles"
         }
       ]
+    },
+    {
+      "name": "Collection and Variables",
+      "menu": [
+        {
+          "name": "Criar collection",
+          "command": "createCollection"
+        }
+      ]
     }
   ]
 }

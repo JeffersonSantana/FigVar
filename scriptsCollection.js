@@ -61,8 +61,8 @@ localTextStyles.forEach(style => {
 
 
 
-// *********** Local Variables *********** //
-const localVariables = figma.variables.getLocalVariables().map(variable => {
+// *********** Get All Local Variables *********** //
+const getAllLocalVariables = figma.variables.getLocalVariables().map(variable => {
     return {
         "id": variable.id,
         "codeSyntax": variable.codeSyntax,
@@ -77,4 +77,44 @@ const localVariables = figma.variables.getLocalVariables().map(variable => {
         "variableCollectionId": variable.variableCollectionId
     }
 });
-// *********** Local Variables *********** //
+// *********** Get All Local Variables *********** //
+
+
+
+
+
+// *********** Remove All Local Variables *********** //
+const removeAllLocalVariables = figma.variables.getLocalVariables().map(variable => {
+    variable.remove();
+});
+// *********** Remove All Local Variables *********** //
+
+
+
+
+
+// *********** Get All Local Collection *********** //
+const getAllLocalCollection = figma.variables.getLocalVariableCollections().map(collection => {
+    return {
+        "id": collection.id,
+        "defaultModeId": collection.defaultModeId,
+        "hiddenFromPublishing": collection.hiddenFromPublishing,
+        "key": collection.key,
+        "modes": collection.modes,
+        "name": collection.name,
+        "remote": collection.remote,
+        "variableIds": collection.variableIds
+    }
+});
+// *********** Get All Local Collection *********** //
+
+
+
+
+
+// *********** Create Collection *********** //
+getAllLocalCollection.map(collection => {
+    const collectionCreated = figma.variables.createVariableCollection(collection.name);
+    collectionCreated.renameMode(collectionCreated.modes[0].modeId, collection.modes[0].name);
+})
+// *********** Create Collection *********** //
