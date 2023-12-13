@@ -24,6 +24,10 @@
         {
           "name": "Criar collection",
           "command": "createCollection"
+        },
+        {
+          "name": "Criar variables",
+          "command": "createVariable"
         }
       ]
     }
