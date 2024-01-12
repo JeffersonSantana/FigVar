@@ -22,12 +22,12 @@
       "name": "Collection and Variables",
       "menu": [
         {
-          "name": "Criar collection",
-          "command": "createCollection"
+          "name": "Criar",
+          "command": "createCollectionVariables"
         },
         {
-          "name": "Criar variables",
-          "command": "createVariable"
+          "name": "Remover",
+          "command": ""
         }
       ]
     }

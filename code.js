@@ -2,11 +2,6 @@ console.clear();
 
 const timeoutCloseAction = 5000;
 
-
-
-
-
-
 // *********** TextStyle *********** //
 async function carregarFonte() {
   await figma.loadFontAsync({ family: "Poppins", style: "Bold" });
@@ -21,7 +16,7 @@ async function createTextStyle(style) {
     textStyle.fontSize = style.fontSize;
   })
   .catch((error) => {
-    console.log("font loading error:", error);
+    console.log("Font loading error:", error);
   })
 }
 
@@ -300,12 +295,6 @@ if (figma.command === 'includeTextStyles') {
 }
 // *********** TextStyle *********** //
 
-
-
-
-
-
-
 // *********** Clear TextStyles *********** //
 function clearAllTextStyles() {
   const localTextStyles = figma.getLocalTextStyles();
@@ -321,16 +310,11 @@ if (figma.command === 'clearAllTextStyles') {
 }
 // *********** Clear TextStyles *********** //
 
-
-
-
-
-
-
-// *********** Create Collection *********** //
-if (figma.command === 'createCollection') {
+// *********** Create Collections and Variables *********** //
+if (figma.command === 'createCollectionVariables') {
   try {
-    const getAllLocalCollection = [
+    // Dataset Collection
+    const LigeroCollection = new Set([
       {
         "id": "VariableCollectionId:6:2",
         "defaultModeId": "6:0",
@@ -494,43 +478,19 @@ if (figma.command === 'createCollection') {
           "VariableID:6:92"
         ]
       }
-    ];
-    getAllLocalCollection.map(collection => {
+    ]);
+
+    // Creating collections in Figma
+    // Created only a single mode
+    LigeroCollection.forEach(collection => {
       const collectionCreated = figma.variables.createVariableCollection(collection.name);
+
+      // Refactory
       collectionCreated.renameMode(collectionCreated.modes[0].modeId, collection.modes[0].name);
     });
-    figma.notify("🚀 Collection do Ligero foi criado!", { timeout: timeoutCloseAction });
-  } catch(e) {
-    console.log(e);
-    figma.notify("❌ Falha ao criar a Collection do Ligero!", { timeout: timeoutCloseAction });
-  }
-  setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
-}
-// *********** Create Collection *********** //
 
-
-
-
-
-
-
-// ************ Create Variable ************ //
-function mapIdCollections() {
-  figma.variables.getLocalVariableCollections().map(newCollection => {
-
-    getAllLocalCollection.map(oldCollection => {
-
-      if (newCollection.name === oldCollection.name) {
-        console.log(newCollection.name + " " + oldCollection.name);
-        console.log(newCollection.id + " " + oldCollection.id);
-      }
-    });
-  });
-}
-
-if (figma.command === 'createVariable') {
-  try {
-    const getAllLocalVariables = [
+    // Dataset Variables 
+    const LigeroVariables = new Set([
       {
         "id": "VariableID:6:3",
         "codeSyntax": {},
@@ -2587,12 +2547,54 @@ if (figma.command === 'createVariable') {
         },
         "variableCollectionId": "VariableCollectionId:6:88"
       }
-    ];
-    figma.notify("🚀 Variable do Ligero foi criado!", { timeout: timeoutCloseAction });
-  } catch (e) {
+    ]);
+
+    mapIdCollections(LigeroCollection);
+
+    // Success
+    figma.notify("🚀 Collection do Ligero foi criado!", { timeout: timeoutCloseAction });
+  } catch(e) {
+    // Fail
     console.log(e);
-    figma.notify("❌ Falha ao criar as Variable do Ligero!", { timeout: timeoutCloseAction });
+    figma.notify("❌ Falha ao criar a Collection do Ligero!", { timeout: timeoutCloseAction });
   }
   setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
 }
-// ************ Create Variable ************ //
+
+function mapIdCollections(LigeroCollection) {
+  let newMapCollection = [];
+
+  const oldLigeroCollection = new Set(Array.from(LigeroCollection).map(objeto => ({
+    id: objeto.id,
+    name: objeto.name
+  })));
+
+  figma.variables.getLocalVariableCollections().forEach(newCollection => {
+
+    const localCollection = {
+      "id": newCollection.id,
+      "name": newCollection.name
+    }
+
+    for (const collection of oldLigeroCollection) {
+      if (collection.name === localCollection.name) {
+        newMapCollection.push({ "from": collection.id, "to": localCollection.id, "name": localCollection.name });
+      }
+    }
+  });
+
+  console.log(newMapCollection);
+  return newMapCollection;
+}
+
+  // try {
+
+  //   console.log(mapIdCollections(getAllLocalCollection));
+  //   figma.notify("🚀 Variable do Ligero foi criado!", { timeout: timeoutCloseAction });
+  // } catch (e) {
+  //   console.log(e);
+  //   figma.notify("❌ Falha ao criar as Variable do Ligero!", { timeout: timeoutCloseAction });
+  // }
+  // setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
+
+// *********** Create Collection *********** //
