@@ -2549,14 +2549,20 @@ if (figma.command === 'createCollectionVariables') {
       }
     ]);
 
-    mapIdCollections(LigeroCollection);
+    // Mapped collection
+    const mappedCollection = mapIdCollections(LigeroCollection);
+
+    LigeroVariables.forEach(variable => {
+      const collectionId = mappedCollection.find(mapped => mapped.from === variable.variableCollectionId).to;
+      figma.variables.createVariable(variable.name, collectionId, variable.resolvedType);
+    });
 
     // Success
-    figma.notify("🚀 Collection do Ligero foi criado!", { timeout: timeoutCloseAction });
+    figma.notify("🚀 Variable do Ligero foi criado!", { timeout: timeoutCloseAction });
   } catch(e) {
     // Fail
     console.log(e);
-    figma.notify("❌ Falha ao criar a Collection do Ligero!", { timeout: timeoutCloseAction });
+    figma.notify("❌ Falha ao criar a Variable do Ligero!", { timeout: timeoutCloseAction });
   }
   setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
 }
@@ -2583,18 +2589,6 @@ function mapIdCollections(LigeroCollection) {
     }
   });
 
-  console.log(newMapCollection);
   return newMapCollection;
 }
-
-  // try {
-
-  //   console.log(mapIdCollections(getAllLocalCollection));
-  //   figma.notify("🚀 Variable do Ligero foi criado!", { timeout: timeoutCloseAction });
-  // } catch (e) {
-  //   console.log(e);
-  //   figma.notify("❌ Falha ao criar as Variable do Ligero!", { timeout: timeoutCloseAction });
-  // }
-  // setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
-
-// *********** Create Collection *********** //
+// *********** Create Collections and Variables *********** //

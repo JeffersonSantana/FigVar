@@ -116,5 +116,15 @@ const getAllLocalCollection = figma.variables.getLocalVariableCollections().map(
 getAllLocalCollection.map(collection => {
     const collectionCreated = figma.variables.createVariableCollection(collection.name);
     collectionCreated.renameMode(collectionCreated.modes[0].modeId, collection.modes[0].name);
-})
+});
 // *********** Create Collection *********** //
+
+
+
+
+
+// *********** Remove All Local Collection *********** //
+figma.variables.getLocalVariableCollections().map(collection => {
+    collection.remove();
+});
+// *********** Remove All Local Collection *********** //
