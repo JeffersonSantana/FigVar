@@ -6,11 +6,11 @@
   "main": "code.js",
   "menu": [
     {
-      "name": "Criar",
+      "name": "Criar variáveis e tipografias",
       "command": "create"
     },
     {
-      "name": "Remover",
+      "name": "Remover variáveis e tipografias",
       "command": "remove"
     }
   ]

@@ -2595,19 +2595,17 @@ function createCollectionVariable() {
 
     if (obj.oldValue.type !== 'VARIABLE_ALIAS') {
       variable.setValueForMode(
-        Object.keys(variable.valuesByMode)[0],
+        obj.newModeId,
         obj.oldValue
       );
     } else {
-      // variable.setValueForMode(
-      //   Object.keys(variable.valuesByMode)[0],
-      //   { type: 'VARIABLE_ALIAS', id: 'VariableID:' + obj.newModeId }
-      // );
-      console.log(
-        Object.keys(variable.valuesByMode)[0],
+      variable.setValueForMode(
+        obj.newModeId,
         {
-          type: 'VARIABLE_ALIAS', id: 'VariableID:' + obj.newModeId
-        });
+          type: 'VARIABLE_ALIAS', 
+          id: valuesByMode.find(val => val.oldVariableId === obj.oldValue.id).newVariableId
+        }
+      )
     }
   });
 }
