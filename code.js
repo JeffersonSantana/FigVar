@@ -13,7 +13,7 @@ async function loadFont() {
 if (figma.command === 'create') {
 
   // Clear
-  clearAllTextStyles();
+  clearTypographic();
   clearVariables();
 
   try {
@@ -21,7 +21,7 @@ if (figma.command === 'create') {
     createCollectionVariable();
 
     // Success
-    figma.notify("🚀 Variable do Ligero foi criado!", { timeout: timeoutCloseAction });
+    figma.notify("🚀 Variáveis e tipografias do Ligero foram criadas!", { timeout: timeoutCloseAction });
   } catch (e) {
     // Fail
     console.log(e);
@@ -33,9 +33,9 @@ if (figma.command === 'create') {
 
 // *********** REMOVE *********** //
 if (figma.command === 'remove') {
-  clearAllTextStyles();
+  clearTypographic();
   clearVariables();
-  figma.notify("😢 TextStyle do Ligero foi removido!", { timeout: 5000 });
+  figma.notify("😢 Variáveis e tipografias do Ligero foram removido!", { timeout: 5000 });
   setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
 }
 // *********** REMOVE *********** //
@@ -308,25 +308,23 @@ function createTypographic() {
     }
   ];
   textStylesArray.forEach(style => {
-    createTextStyle(style);
+    setTextStyle(style);
   });
-  figma.notify("🚀 TextStyle do Ligero foi criado!", { timeout: timeoutCloseAction });
-  setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
 }
 
-async function createTextStyle(style) {
+async function setTextStyle(style) {
   loadFont().then(() => {
     const textStyle = figma.createTextStyle();
     textStyle.name = style.name;
     textStyle.fontName = style.fontName;
     textStyle.fontSize = style.fontSize;
   })
-    .catch((error) => {
-      console.log("Font loading error:", error);
-    })
+  .catch((error) => {
+    console.log("Font loading error:", error);
+  })
 }
 
-function clearAllTextStyles() {
+function clearTypographic() {
   const localTextStyles = figma.getLocalTextStyles();
   localTextStyles.forEach(style => {
     style.remove();
