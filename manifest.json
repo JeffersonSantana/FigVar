@@ -6,30 +6,12 @@
   "main": "code.js",
   "menu": [
     {
-      "name": "TextStyles",
-      "menu": [
-        {
-          "name": "Criar",
-          "command": "includeTextStyles"
-        },
-        {
-          "name": "Remover",
-          "command": "clearAllTextStyles"
-        }
-      ]
+      "name": "Criar",
+      "command": "create"
     },
     {
-      "name": "Collection and Variables",
-      "menu": [
-        {
-          "name": "Criar",
-          "command": "createCollectionVariables"
-        },
-        {
-          "name": "Remover",
-          "command": ""
-        }
-      ]
+      "name": "Remover",
+      "command": "remove"
     }
   ]
 }
