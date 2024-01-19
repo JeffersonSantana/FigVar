@@ -56,3 +56,75 @@ localTextStyles.forEach(style => {
     style.remove();
 });
 // *********** Limpar TextStyles *********** //
+
+
+
+
+
+// *********** Get All Local Variables *********** //
+const getAllLocalVariables = figma.variables.getLocalVariables().map(variable => {
+    return {
+        "id": variable.id,
+        "codeSyntax": variable.codeSyntax,
+        "description": variable.description,
+        "hiddenFromPublishing": variable.hiddenFromPublishing,
+        "key": variable.key,
+        "name": variable.name,
+        "remote": variable.remote,
+        "resolvedType": variable.resolvedType,
+        "scopes": variable.scopes,
+        "valuesByMode": variable.valuesByMode,
+        "variableCollectionId": variable.variableCollectionId
+    }
+});
+// *********** Get All Local Variables *********** //
+
+
+
+
+
+// *********** Remove All Local Variables *********** //
+const removeAllLocalVariables = figma.variables.getLocalVariables().map(variable => {
+    variable.remove();
+});
+// *********** Remove All Local Variables *********** //
+
+
+
+
+
+// *********** Get All Local Collection *********** //
+const getAllLocalCollection = figma.variables.getLocalVariableCollections().map(collection => {
+    return {
+        "id": collection.id,
+        "defaultModeId": collection.defaultModeId,
+        "hiddenFromPublishing": collection.hiddenFromPublishing,
+        "key": collection.key,
+        "modes": collection.modes,
+        "name": collection.name,
+        "remote": collection.remote,
+        "variableIds": collection.variableIds
+    }
+});
+// *********** Get All Local Collection *********** //
+
+
+
+
+
+// *********** Create Collection *********** //
+getAllLocalCollection.map(collection => {
+    const collectionCreated = figma.variables.createVariableCollection(collection.name);
+    collectionCreated.renameMode(collectionCreated.modes[0].modeId, collection.modes[0].name);
+});
+// *********** Create Collection *********** //
+
+
+
+
+
+// *********** Remove All Local Collection *********** //
+figma.variables.getLocalVariableCollections().map(collection => {
+    collection.remove();
+});
+// *********** Remove All Local Collection *********** //

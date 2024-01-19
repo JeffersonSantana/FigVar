@@ -1,0 +1,165 @@
+[
+    {
+        "id": "VariableCollectionId:6:2",
+        "defaultModeId": "6:0",
+        "hiddenFromPublishing": false,
+        "key": "aa8555d68bf024742de587699c2d26de622746cf",
+        "modes": [
+            {
+                "name": "Light",
+                "modeId": "6:0"
+            },
+            {
+                "name": "Dark",
+                "modeId": "6:1"
+            }
+        ],
+        "name": "Ligero/Color_Tokens",
+        "remote": false,
+        "variableIds": [
+            "VariableID:6:6",
+            "VariableID:6:7",
+            "VariableID:6:8",
+            "VariableID:6:9",
+            "VariableID:6:10",
+            "VariableID:6:11",
+            "VariableID:6:12",
+            "VariableID:6:13",
+            "VariableID:6:14",
+            "VariableID:6:15",
+            "VariableID:6:16",
+            "VariableID:6:17",
+            "VariableID:6:18",
+            "VariableID:6:19",
+            "VariableID:6:23",
+            "VariableID:6:24",
+            "VariableID:6:25",
+            "VariableID:6:26",
+            "VariableID:6:29",
+            "VariableID:6:30",
+            "VariableID:6:31",
+            "VariableID:6:32",
+            "VariableID:6:41",
+            "VariableID:6:3",
+            "VariableID:6:4",
+            "VariableID:6:5",
+            "VariableID:6:20",
+            "VariableID:6:21",
+            "VariableID:6:22",
+            "VariableID:6:27",
+            "VariableID:6:28",
+            "VariableID:6:33",
+            "VariableID:6:34",
+            "VariableID:6:35",
+            "VariableID:6:36",
+            "VariableID:6:37",
+            "VariableID:6:38",
+            "VariableID:6:39",
+            "VariableID:6:40",
+            "VariableID:6:42",
+            "VariableID:6:43",
+            "VariableID:6:44",
+            "VariableID:6:45",
+            "VariableID:6:46",
+            "VariableID:6:47",
+            "VariableID:6:48",
+            "VariableID:6:49",
+            "VariableID:6:50",
+            "VariableID:6:51",
+            "VariableID:6:52",
+            "VariableID:6:53",
+            "VariableID:6:54",
+            "VariableID:6:55",
+            "VariableID:6:56",
+            "VariableID:6:57",
+            "VariableID:6:58",
+            "VariableID:6:59",
+            "VariableID:6:60",
+            "VariableID:6:61",
+            "VariableID:6:62",
+            "VariableID:6:63",
+            "VariableID:6:64",
+            "VariableID:6:65",
+            "VariableID:6:66",
+            "VariableID:6:67",
+            "VariableID:6:68",
+            "VariableID:6:69",
+            "VariableID:6:70",
+            "VariableID:6:71"
+        ]
+    },
+    {
+        "id": "VariableCollectionId:6:72",
+        "defaultModeId": "6:2",
+        "hiddenFromPublishing": false,
+        "key": "c9af69ea8c93cf8aca494563f02f6123fc962fc7",
+        "modes": [
+            {
+                "name": "Mobile",
+                "modeId": "6:2"
+            },
+            {
+                "name": "Tablet",
+                "modeId": "6:3"
+            },
+            {
+                "name": "Desktop",
+                "modeId": "6:4"
+            }
+        ],
+        "name": "Ligero/Grid_Spacing",
+        "remote": false,
+        "variableIds": [
+            "VariableID:6:73"
+        ]
+    },
+    {
+        "id": "VariableCollectionId:6:74",
+        "defaultModeId": "6:5",
+        "hiddenFromPublishing": false,
+        "key": "0466c3d2f68e2a6af66dfc40f83e66c8831a837d",
+        "modes": [
+            {
+                "name": "Mode 1",
+                "modeId": "6:5"
+            }
+        ],
+        "name": "Ligero/Spacing_Tokens",
+        "remote": false,
+        "variableIds": [
+            "VariableID:6:75",
+            "VariableID:6:76",
+            "VariableID:6:77",
+            "VariableID:6:78",
+            "VariableID:6:79",
+            "VariableID:6:80",
+            "VariableID:6:81",
+            "VariableID:6:82",
+            "VariableID:6:83",
+            "VariableID:6:84",
+            "VariableID:6:85",
+            "VariableID:6:86",
+            "VariableID:6:87"
+        ]
+    },
+    {
+        "id": "VariableCollectionId:6:88",
+        "defaultModeId": "6:6",
+        "hiddenFromPublishing": false,
+        "key": "a3345be4db3ce5fb7626696f05c80ea11d97bdad",
+        "modes": [
+            {
+                "name": "Mode 1",
+                "modeId": "6:6"
+            }
+        ],
+        "name": "Ligero/Corner_Radius",
+        "remote": false,
+        "variableIds": [
+            "VariableID:6:89",
+            "VariableID:6:90",
+            "VariableID:6:91",
+            "VariableID:6:92"
+        ]
+    }
+]

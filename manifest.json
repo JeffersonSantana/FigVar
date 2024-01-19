@@ -1,9 +1,20 @@
 {
-  "name": "LigeroFigTools - Powered by Ci&T",
+  "name": "LigeroFigTools",
   "id": "1308228935703829791",
   "api": "1.0.0",
   "editorType": ["figma"],
-  "permissions": [],
   "main": "code.js",
-  "ui": "UI.html" 
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "menu": [
+    {
+      "name": "Criar variáveis e tipografias",
+      "command": "create"
+    },
+    {
+      "name": "Remover variáveis e tipografias",
+      "command": "remove"
+    }
+  ]
 }
