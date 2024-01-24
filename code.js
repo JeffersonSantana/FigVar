@@ -308,20 +308,16 @@ function createTypographic() {
     }
   ];
   textStylesArray.forEach(style => {
-    setTextStyle(style);
+    loadFont().then(() => {
+      const textStyle = figma.createTextStyle();
+      textStyle.name = style.name;
+      textStyle.fontName = style.fontName;
+      textStyle.fontSize = style.fontSize;
+    })
+      .catch((error) => {
+        console.log("Font loading error:", error);
+      })
   });
-}
-
-async function setTextStyle(style) {
-  loadFont().then(() => {
-    const textStyle = figma.createTextStyle();
-    textStyle.name = style.name;
-    textStyle.fontName = style.fontName;
-    textStyle.fontSize = style.fontSize;
-  })
-  .catch((error) => {
-    console.log("Font loading error:", error);
-  })
 }
 
 function clearTypographic() {
