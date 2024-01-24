@@ -28,6 +28,7 @@ localPaintStyles.forEach(style => {
 // *********** Exportar TextStyles *********** //
 const dataTextStyle = figma.getLocalTextStyles().map(style => {
     return {
+        "id": style.id,
         "name": style.name,
         "description": style.description,
         "fontName": style.fontName,

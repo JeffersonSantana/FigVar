@@ -40,9 +40,10 @@ if (figma.command === 'remove') {
 }
 // *********** REMOVE *********** //
 
-function createTypographic() {
+async function createTypographic() {
   const textStylesArray = [
     {
+      "id": "S:618e07cb1749fde19f60a094b082dc1a8d44c70f,",
       "name": "h1",
       "description": "Header",
       "fontName": {
@@ -65,6 +66,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:9c46b2a155899cc662de894e6dbd51fe4ff1193f,",
       "name": "h2",
       "description": "Header",
       "fontName": {
@@ -87,6 +89,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:0dab44231b09d5085a47b7d0f2cfe84dbc192237,",
       "name": "h3",
       "description": "Header",
       "fontName": {
@@ -109,6 +112,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:d65e2e44a21b08c8e6581674121ecd8ec4db5980,",
       "name": "h4",
       "description": "Header",
       "fontName": {
@@ -131,6 +135,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:3f57bea7efb05dc38d1d41a7840260ec3bdf1b1c,",
       "name": "h5",
       "description": "Header",
       "fontName": {
@@ -153,6 +158,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:8808526fa852b3a1854a251b4afb8e8a1a711e28,",
       "name": "h6",
       "description": "Header",
       "fontName": {
@@ -175,6 +181,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:b0908800ee26ad39fee79e27e29d4bf5d11e4ce7,",
       "name": "primary-content",
       "description": "Conteudo",
       "fontName": {
@@ -197,6 +204,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:662ae06e8addfee945add8dd1e80e3e73e52d486,",
       "name": "primary-content-bold",
       "description": "Conteúdo",
       "fontName": {
@@ -219,6 +227,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:77d19da78dcd150c27314ccdb1814579ad8f9877,",
       "name": "secondary-content",
       "description": "Conteúdo",
       "fontName": {
@@ -241,6 +250,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:178c78410ffc3627d8fc51b54aee9bfed7eefd4c,",
       "name": "secondary-content-bold",
       "description": "Conteúdo",
       "fontName": {
@@ -263,6 +273,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:f0d732cbe59e7ed4e28cdc15951c21760b3a7684,",
       "name": "tertiary-content",
       "description": "Conteúdo",
       "fontName": {
@@ -285,6 +296,7 @@ function createTypographic() {
       "type": "TEXT"
     },
     {
+      "id": "S:e8fddc03dde2a5a6ca20779c7b4fda95f2eecfb1,",
       "name": "tertiary-content-bold",
       "description": "Header",
       "fontName": {
@@ -307,16 +319,38 @@ function createTypographic() {
       "type": "TEXT"
     }
   ];
-  textStylesArray.forEach(style => {
-    loadFont().then(() => {
-      const textStyle = figma.createTextStyle();
-      textStyle.name = style.name;
-      textStyle.fontName = style.fontName;
-      textStyle.fontSize = style.fontSize;
-    })
-      .catch((error) => {
-        console.log("Font loading error:", error);
-      })
+
+  function replaceTypographic() {
+    let createdStyle = [];
+    return new Promise((resolve) => {
+      loadFont().then(() => {
+        textStylesArray.forEach(style => {
+          const textStyle = figma.createTextStyle();
+          textStyle.name = style.name;
+          textStyle.fontName = style.fontName;
+          textStyle.fontSize = style.fontSize;
+          createdStyle.push({
+            "object": textStyle,
+            "id": textStyle.id,
+            "name": textStyle.name
+          });
+        });
+        resolve(createdStyle);
+      }).catch ((error) => {
+        console.log(error);
+        figma.notify("❌ Falha ao criar a Variable do Ligero!", { timeout: timeoutCloseAction });
+      });
+    });
+  }
+
+  await replaceTypographic().then((createdStyle) => {
+    figma.root.findAllWithCriteria({ types: ["TEXT"] }).forEach((node) => {
+      const oldStyle = textStylesArray.find(style => style.id === node.textStyleId.split(",")[0] + ",");
+      if (oldStyle) {
+        const newStyle = createdStyle.find(style => style.name === oldStyle.name);
+        node.setRangeTextStyleId(0, node.characters.length, newStyle.id);
+      }
+    });
   });
 }
 
