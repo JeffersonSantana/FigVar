@@ -13,12 +13,13 @@ async function loadFont() {
 if (figma.command === 'create') {
 
   // Clear
-  clearTypographic();
-  clearVariables();
+  // clearTypographic();
+  // clearVariables();
 
   try {
-    createTypographic();
-    createCollectionVariable();
+    // createTypographic();
+    // createCollectionVariable();
+    replaceColors();
 
     // Success
     figma.notify("🚀 Variáveis e tipografias do Ligero foram criadas!", { timeout: timeoutCloseAction });
@@ -39,6 +40,44 @@ if (figma.command === 'remove') {
   setTimeout(() => { figma.closePlugin(); }, timeoutCloseAction);
 }
 // *********** REMOVE *********** //
+
+async function replaceColors() {
+
+  async function getAllNodes() {
+    return new Promise((resolve) => {
+      const currentPage = figma.currentPage;
+      const nodes = [];
+      const allNodes = currentPage.findAll();
+      allNodes.forEach(node => {
+        nodes.push({
+          "idNode": node.id,
+          "boundVariables": node.boundVariables
+        });
+      });
+      resolve(nodes);
+    });
+  }
+
+  await getAllNodes().then((nodes) => {
+    const fff = new Promise((resolve) => {
+      let variable = [];
+      nodes.forEach((node) => {
+        const localVariable = figma.variables.getVariableById(node.boundVariables.fills[0].id);
+        variable.push({
+          "idNode": node.idNode,
+          "nodeBoundVariables": node.boundVariables,
+          "idVariable": localVariable.id,
+          "nameVariable": localVariable.name,
+          "variableCollectionId": localVariable.variableCollectionId,
+          "remoteVariable": localVariable.remote
+        });
+      });
+      resolve(variable);
+    });
+
+    fff.then((ddd) => { console.log(ddd) });
+  });
+}
 
 async function createTypographic() {
   const textStylesArray = [
@@ -346,6 +385,7 @@ async function createTypographic() {
   await replaceTypographic().then((createdStyle) => {
     figma.root.findAllWithCriteria({ types: ["TEXT"] }).forEach((node) => {
       const oldStyle = textStylesArray.find(style => style.id === node.textStyleId.split(",")[0] + ",");
+      console.log(oldStyle)
       if (oldStyle) {
         const newStyle = createdStyle.find(style => style.name === oldStyle.name);
         node.setRangeTextStyleId(0, node.characters.length, newStyle.id);
